@@ -11,6 +11,8 @@ set expandtab
 set shiftwidth=4
 filetype indent on
 syntax on
+autocmd FileType python setlocal commentstring=#\ %s "supports commenting
+
 
 " Searching settings
 set ignorecase
