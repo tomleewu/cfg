@@ -1,5 +1,4 @@
 set number
-nmap oo m`o<Esc>`` 
 imap jj <C-[>
 
 set showcmd "Display incomplete commands
