@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/tomleewu/stop_badware/.git'
+let g:netrw_dirhist_2='/home/tomleewu/Desktop/script_automation/.git'
+let g:netrw_dirhist_3='/home/tomleewu/.vim'
+let g:netrw_dirhist_4='/home/tomleewu/.oh-my-zsh'
