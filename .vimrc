@@ -1,3 +1,5 @@
+let g:onedark_termcolors=16
+
 set number
 imap jj <C-[>
 
@@ -41,3 +43,4 @@ if (empty($TMUX))
 endif
 
 colorscheme onedark
+

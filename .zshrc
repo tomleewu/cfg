@@ -12,6 +12,7 @@ ZSH_THEME="avit"
 
 # Set alias for setting up dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
