@@ -20,6 +20,7 @@ autocmd FileType python setlocal commentstring=#\ %s "supports commenting
 set ignorecase
 set hlsearch
 set smartcase
+nnoremap <esc> :noh<return><esc>
 
 set foldmethod=indent
 
