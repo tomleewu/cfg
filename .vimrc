@@ -22,6 +22,12 @@ set smartcase
 
 set foldmethod=indent
 
+" Speeding up CTRLP plugin
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
 " Pathogen support
  execute pathogen#infect()
 
