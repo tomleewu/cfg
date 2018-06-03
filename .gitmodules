@@ -7,3 +7,6 @@
 [submodule ".vim/bundle/VimCompletesMe"]
 	path = .vim/bundle/VimCompletesMe
 	url = https://github.com/ajh17/VimCompletesMe.git
+[submodule ".vim/bundle/ctrlpvim"]
+	path = .vim/bundle/ctrlpvim
+	url = https://github.com/ctrlpvim/ctrlp.vim
