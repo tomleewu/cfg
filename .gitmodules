@@ -1,4 +1,4 @@
-[submodule "/home/admin/.vim/bundle/vim-polyglot"]
+[submodule ".vim/bundle/vim-polyglot"]
 	path = .vim/bundle/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot.git
 [submodule ".vim/bundle/vim-commentary"]
@@ -10,3 +10,6 @@
 [submodule ".vim/bundle/ctrlpvim"]
 	path = .vim/bundle/ctrlpvim
 	url = https://github.com/ctrlpvim/ctrlp.vim
+[submodule ".vim/bundle/ale"]
+	path = .vim/bundle/ale
+	url = https://github.com/w0rp/ale.git

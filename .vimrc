@@ -8,18 +8,18 @@ set scrolloff=5
 
 " Python settings
 set autoindent
-set tabstop=4
 set expandtab
-set shiftwidth=4
 filetype indent on
 syntax on
-autocmd FileType python setlocal commentstring=#\ %s "supports commenting
+autocmd FileType python setlocal commentstring=#\ %s ts=4 sts=4 sw=4 "supports commenting
 
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
 " Searching settings
 set ignorecase
 set hlsearch
 set smartcase
+nnoremap <esc> :noh<return><esc>
 
 set foldmethod=indent
 
