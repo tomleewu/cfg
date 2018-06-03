@@ -19,7 +19,6 @@ autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 set ignorecase
 set hlsearch
 set smartcase
-nnoremap <esc> :noh<return><esc>
 
 set foldmethod=indent
 
