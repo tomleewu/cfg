@@ -7,6 +7,6 @@
 [submodule ".vim/bundle/VimCompletesMe"]
 	path = .vim/bundle/VimCompletesMe
 	url = https://github.com/ajh17/VimCompletesMe.git
-[submodule "/Users/tw060277/.vim/bundle/ale"]
-	path = /Users/tw060277/.vim/bundle/ale
+[submodule ".vim/bundle/ale"]
+	path = .vim/bundle/ale
 	url = https://github.com/w0rp/ale.git
