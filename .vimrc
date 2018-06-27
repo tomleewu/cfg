@@ -6,6 +6,12 @@ imap jj <C-[>
 set showcmd "Display incomplete commands
 set scrolloff=5
 
+" Copy paste
+set clipboard=unnamed
+vmap <C-c> :w !pbcopy<CR><CR>
+map <C-x> :!pbcopy<CR>
+
+
 " Python settings
 set autoindent
 set expandtab
@@ -13,7 +19,15 @@ filetype indent on
 syntax on
 autocmd FileType python setlocal commentstring=#\ %s ts=4 sts=4 sw=4 "supports commenting
 
+" Set spacing in frontend
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
+
+" Vim Markdown Plugin 
+let vim_markdown_preview_hotkey='<C-m>'
+let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Firefox'
 
 " Searching settings
 set ignorecase
@@ -21,6 +35,11 @@ set hlsearch
 set smartcase
 
 set foldmethod=indent
+
+" Pasting settings
+nnoremap <F2> :set invpaste paste?<CR>
+set pastetoggle=<F2>
+set showmode
 
 " Speeding up CTRLP plugin
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'

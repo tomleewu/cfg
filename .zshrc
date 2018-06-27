@@ -12,6 +12,8 @@ ZSH_THEME="avit"
 
 # Set alias for setting up dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias unload='launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.chunkwm.plist'
+alias load='launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.chunkwm.plist'
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
