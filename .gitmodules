@@ -22,3 +22,6 @@
 [submodule "/Users/tomleewu/.vim/bundle/vim-autoclose"]
 	path = /Users/tomleewu/.vim/bundle/vim-autoclose
 	url = git@github.com:Townk/vim-autoclose.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = git@github.com:tpope/vim-surround.git
