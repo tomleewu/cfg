@@ -19,3 +19,6 @@
 [submodule ".vim/bundle/vim-markdown-preview"]
 	path = .vim/bundle/vim-markdown-preview
 	url = git@github.com:JamshedVesuna/vim-markdown-preview.git
+[submodule "/Users/tomleewu/.vim/bundle/vim-autoclose"]
+	path = /Users/tomleewu/.vim/bundle/vim-autoclose
+	url = git@github.com:Townk/vim-autoclose.git
