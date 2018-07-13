@@ -14,8 +14,6 @@ map <C-x> :!pbcopy<CR>
 " Python settings
 set autoindent
 set expandtab
-filetype indent on
-syntax on
 autocmd FileType python setlocal commentstring=#\ %s ts=4 sts=4 sw=4 "supports commenting
 
 " Set spacing in frontend
@@ -53,7 +51,12 @@ if executable('ag')
 endif
 let g:ctrlp_by_filename = 1
 
-" Plug
+" Plug (install if necessary)
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin()
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
