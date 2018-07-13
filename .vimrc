@@ -11,7 +11,6 @@ set clipboard=unnamed
 vmap <C-c> :w !pbcopy<CR><CR>
 map <C-x> :!pbcopy<CR>
 
-
 " Python settings
 set autoindent
 set expandtab
@@ -28,6 +27,12 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2
 let vim_markdown_preview_hotkey='<C-m>'
 let vim_markdown_preview_github=1
 let vim_markdown_preview_browser='Firefox'
+
+" Switching buffers
+let mapleader = ";"
+map <leader>n :bn<cr>
+map <leader>p :bp<cr>
+map <leader>d :bd<cr>
 
 " Searching settings
 set ignorecase
@@ -46,9 +51,23 @@ let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+let g:ctrlp_by_filename = 1
+
+" Plug
+call plug#begin()
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'ajh17/VimCompletesMe'
+Plug 'kien/ctrlp.vim'
+Plug 'w0rp/ale'
+Plug 'mattn/emmet-vim'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'Townk/vim-autoclose'
+Plug 'tpope/vim-surround'
+call plug#end()
 
 " Pathogen support
- execute pathogen#infect()
+" execute pathogen#infect()
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
