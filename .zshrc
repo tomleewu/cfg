@@ -92,8 +92,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias vim="nvim"
-alias v="nvim"
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+  alias v='nvim'
+fi
 
 # Load NVM
 export NVM_DIR="$HOME/.nvm"
