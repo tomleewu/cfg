@@ -1,15 +1,23 @@
-let g:onedark_termcolors=16
-
 set number
 imap jj <C-[>
 
 set showcmd "Display incomplete commands
 set scrolloff=5
+" Search within what's being displayed on the screen
+nnoremap <silent> z/ :set scrolloff=0<CR>VHoL<Esc>:set scrolloff=5<CR>``/\%V
+" Clear search with :C
+:command C let @/=""
+
+" Centralize swap files
+set directory^=$HOME/.vim/swapfiles//
 
 " Copy paste
 set clipboard=unnamed
 vmap <C-c> :w !pbcopy<CR><CR>
 map <C-x> :!pbcopy<CR>
+
+" Tags
+set tags=tags;/
 
 " Python settings
 set autoindent
@@ -20,6 +28,10 @@ autocmd FileType python setlocal commentstring=#\ %s ts=4 sts=4 sw=4 "supports c
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd Filetype scss setlocal ts=2 sts=2 sw=2
+
+" VimCompletesMe setup
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Vim Markdown Plugin 
 let vim_markdown_preview_hotkey='<C-m>'
@@ -27,10 +39,12 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_browser='Firefox'
 
 " Switching buffers
-let mapleader = ";"
+let mapleader = (' ')
+nnoremap <leader>b :ls<cr>:b<space>
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
 map <leader>d :bd<cr>
+set hidden "Allow for buffer switching without saves
 
 " Searching settings
 set ignorecase
@@ -47,9 +61,18 @@ set showmode
 " Speeding up CTRLP plugin
 let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 let g:ctrlp_by_filename = 1
+
+" Searching using Ag
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " Plug (install if necessary)
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -58,7 +81,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin()
-Plug 'joshdark/onedark.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'ajh17/VimCompletesMe'
@@ -69,9 +95,6 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-surround'
 call plug#end()
-
-" Pathogen support
-" execute pathogen#infect()
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -89,5 +112,8 @@ if (empty($TMUX))
     endif
 endif
 
+" vim-airline / theme settings
+let g:onedark_termcolors=16
+let g:airline_theme='onedark'
+let g:airline_powerline_fonts=1
 colorscheme onedark
-

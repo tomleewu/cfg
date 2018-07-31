@@ -1,5 +1,3 @@
-# Tmux plugin
-ZSH_TMUX_AUTOSTART=true
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH:~/.local/bin:$PATH
 
@@ -59,7 +57,7 @@ alias load='launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.chunkwm.plist
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z web-search tmux)
+plugins=(git z tmux)
 
 source $ZSH/oh-my-zsh.sh
 
