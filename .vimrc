@@ -3,8 +3,10 @@ imap jj <C-[>
 
 set showcmd "Display incomplete commands
 set scrolloff=5
+
 " Search within what's being displayed on the screen
 nnoremap <silent> z/ :set scrolloff=0<CR>VHoL<Esc>:set scrolloff=5<CR>``/\%V
+
 " Clear search with :C
 :command C let @/=""
 
@@ -51,8 +53,6 @@ set ignorecase
 set hlsearch
 set smartcase
 
-set foldmethod=indent
-
 " Pasting settings
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
@@ -71,15 +71,13 @@ let g:ctrlp_by_filename = 1
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
 " Plug (install if necessary)
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+
 call plug#begin()
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
