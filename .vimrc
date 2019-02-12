@@ -7,9 +7,6 @@ set scrolloff=5
 " Search within what's being displayed on the screen
 nnoremap <silent> z/ :set scrolloff=0<CR>VHoL<Esc>:set scrolloff=5<CR>``/\%V
 
-" Clear search with :C
-:command C let @/=""
-
 " Centralize swap files
 set directory^=$HOME/.vim/swapfiles//
 
@@ -66,11 +63,6 @@ if executable('ag')
 endif
 let g:ctrlp_by_filename = 1
 
-" Searching using Ag
-" bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-nnoremap \ :Ag<SPACE>
-
 " Plug (install if necessary)
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -92,6 +84,7 @@ Plug 'mattn/emmet-vim'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-surround'
+Plug 'romainl/vim-cool'
 call plug#end()
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
