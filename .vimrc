@@ -24,9 +24,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
-" Source FZF in Ubuntu
-source /usr/share/doc/fzf/examples/fzf.vim
-
 set number
 imap jj <C-[>
 
