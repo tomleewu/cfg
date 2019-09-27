@@ -187,39 +187,25 @@ gaps inner 10
 gaps outer 0
 smart_gaps on
 
-# Use with LG 27" 5k Display
-#exec xrandr --output eDP1 --off --output DP1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output DP2 --off --output DP3 --off --output VIRTUAL1 --off
-#exec xrandr --output DP1 --brightness 0.65
-
 # Set DPI for Firefox
-exec xrdb -merge ~/.Xresources
+#exec xrdb -merge ~/.Xresources
 
 # Caps-lock -> Control
-exec setxkbmap -layout us -option ctrl:nocaps
+#exec setxkbmap -layout us -option ctrl:nocaps
 
 # Set Magic Mouse level acceleration
-exec xinput set-prop "Magic Mouse 2" "libinput Accel Speed" -0.85
+#exec xinput set-prop "Magic Mouse 2" "libinput Accel Speed" -0.85
 
 # Set Microsoft Mouse acceleration
 #exec xinput set-prop "Microsoft Microsoft 3-Button Mouse with IntelliEye(TM)" "libinput Accel Speed" 0.75
 
 # Set background image
-exec feh --bg-fill ~/Downloads/patrick-hendry-tKyXbJNH2bQ-unsplash.jpg
-
+exec feh --bg-fill ~/Downloads/wallpaper.jpg
 
 exec compton
 
-# Bind Backlight with light
-bindsym XF86MonBrightnessUp exec light -A 5; # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5; # decrease screen brightness
+exec_always --no-startup-id flashfocus
 
-#######################################################################
-# automatically start i3-config-wizard to offer the user to create a
-# keysym-based config which used their favorite modifier (alt or windows)
-#
-# i3-config-wizard will not launch if there already is a config file
-# in ~/.i3/config.
-#
-# Please remove the following exec line:
-#######################################################################
-#exec i3-config-wizard
+# Bind Backlight with light
+bindsym XF86MonBrightnessUp exec light -A 5;
+bindsym XF86MonBrightnessDown exec light -U 5;
