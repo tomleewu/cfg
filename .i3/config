@@ -185,13 +185,13 @@ for_window [class=".*"] border pixel 0
 
 gaps inner 10
 gaps outer 0
-smart_gaps on
 
 # Set DPI for Firefox
 #exec xrdb -merge ~/.Xresources
 
 # Caps-lock -> Control
 #exec setxkbmap -layout us -option ctrl:nocaps
+exec --no-startup-id xmodmap ~/.Xmodmap
 
 # Set Magic Mouse level acceleration
 #exec xinput set-prop "Magic Mouse 2" "libinput Accel Speed" -0.85
@@ -200,9 +200,12 @@ smart_gaps on
 #exec xinput set-prop "Microsoft Microsoft 3-Button Mouse with IntelliEye(TM)" "libinput Accel Speed" 0.75
 
 # Set background image
-exec feh --bg-fill ~/Downloads/wallpaper.jpg
+exec_always --no-startup-id feh --bg-fill ~/Downloads/wallpaper.jpg
 
-exec compton
+# Keybinding for locking screen
+bindsym Mod1+Shift+x exec betterlockscreen -l dim
+
+exec --no-startup-id compton
 
 exec_always --no-startup-id flashfocus
 
