@@ -8,23 +8,16 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="avit"
+ZSH_THEME="spaceship"
 
 # Set alias for setting up dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias unload='launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.chunkwm.plist'
-alias load='launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.chunkwm.plist'
-
-# Set virtualenvwrapper vars
-export WORKON_HOME=$HOME/.virtualenvs
-source /Users/tomleewu/Library/Python/2.7/bin/virtualenvwrapper.sh
-export PROJECT_HOME=$HOME/Projects/
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z tmux)
+plugins=(git z tmux zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -74,15 +67,9 @@ if type nvim > /dev/null 2>&1; then
   alias v='nvim'
 fi
 
-# Load NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-# virtualenvwrapper for Python
-#export WORKON_HOME=$HOME/.virtualenvs
-#export PROJECT_HOME=$HOME/Devel
-#source /usr/local/bin/virtualenvwrapper.sh
-
 # Change color config for Terminal
-export CLICOLOR=1
-export LSCOLORS=ExFxBxDxCxegedabagacad
+#export CLICOLOR=1
+#export LSCOLORS=ExFxBxDxCxegedabagacad
+export GOPATH=/home/tom/go
+SPACESHIP_GOLANG_SHOW=false
+SPACESHIP_EXEC_TIME_SHOW=false
