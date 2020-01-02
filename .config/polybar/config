@@ -24,7 +24,6 @@ my_color3       = #C678DD
 my_color6	= #00b294bb
 
 [bar/main]
-;monitor = ${env:MONITOR:DP1-2-8}
 monitor = ${env:MONITOR:}
 bottom = false
 width = 100%
@@ -34,6 +33,8 @@ offset-y = 0
 radius = 0.0
 fixed-center = true
 
+dpi-x = 0
+dpi-y = 0
 
 background = ${colors.my_background}
 foreground =  ${colors.my_foreground}
@@ -51,7 +52,7 @@ padding-left = 0
 padding-right = 0
 
 module-margin-left = 0
-module-margin-right = 0
+module-margin-right = 5
 
 font-0 = Iosevka,Iosevka Nerd Font:style=Regular:size=11;1
 font-1 = Material Icons:style=Regular:size=11;2
@@ -59,9 +60,9 @@ font-1 = Material Icons:style=Regular:size=11;2
 
 modules-left = i3 xwindow
 modules-center = date 
-modules-right = pulseaudio musicinfo battery
+modules-right = network pulseaudio musicinfo battery
 
-tray-position = right
+tray-position =
 tray-padding = 9
 tray-transparent = false
 tray-offset-y = 0%
@@ -111,7 +112,6 @@ exec = ~/.config/polybar/scripts/music.sh
 interval = 5
 format = <label>
 label = %output:0:30:...%
-format-padding = 5
 format-foreground = ${colors.my_color0}
 
 [module/date]
@@ -127,7 +127,6 @@ time-alt = %H:%M
 
 format-prefix-foreground = ${colors.my_foreground}
 format-underline =
-
 
 label = %date% %time%
 
@@ -238,3 +237,47 @@ scroll-up = ~/.config/polybar/scripts/pulseaudio-control.sh --up
 scroll-down = ~/.config/polybar/scripts/pulseaudio-control.sh --down
 label-padding = 2
 label-foreground = ${colors.my_foreground}
+
+[module/network]
+type = internal/network
+
+interface = wlp59s0
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3.0
+
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+format-connected = <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <label-connected>
+
+; All labels support the following tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+
+
+; Default: %ifname% %local_ip%
+label-connected =  %essid%
+label-connected-foreground =${colors.my_color0}
+
+
+; Default: (none)
+label-disconnected =  Not connected
+label-disconnected-foreground = ${colors.my_color0}
