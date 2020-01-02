@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH:~/.local/bin:$PATH
+export PATH=$HOME/go/bin:$HOME/bin:/usr/local/bin:$PATH:~/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 # export ZSH=/Users/tomleewu/.oh-my-zsh
@@ -8,7 +8,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="common"
 
 # Set alias for setting up dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -17,7 +17,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z tmux zsh-autosuggestions)
+plugins=(git z tmux kubectl zsh-autosuggestions vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -67,9 +67,14 @@ if type nvim > /dev/null 2>&1; then
   alias v='nvim'
 fi
 
-# Change color config for Terminal
-#export CLICOLOR=1
-#export LSCOLORS=ExFxBxDxCxegedabagacad
-export GOPATH=/home/tom/go
+export GOPATH=/home/twu/go
+export GOBIN=/home/twu/go/bin
+export GPG_TTY=$(tty)
+# Spaceship prompt customizations
 SPACESHIP_GOLANG_SHOW=false
 SPACESHIP_EXEC_TIME_SHOW=false
+export KEYTIMEOUT=1
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
