@@ -1,0 +1,23 @@
+window {
+margin: 5px;
+background-color: #282828;
+border-radius: 5px;
+opacity: 0.9;
+}
+
+#input {
+margin: 5px;
+background-color: #282828;
+color: #d4be98;
+border: none;
+}
+
+#input:focus {
+outline: none;
+box-shadow: none;
+}
+
+#text {
+margin: 5px;
+color: #d4be98;
+} 

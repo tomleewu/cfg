@@ -1,0 +1,98 @@
+* {
+    border: none;
+    border-radius: 0;
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: "Noto Sans", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(40, 40, 40, 0.85);
+    color: #a89984;
+    transition-property: background-color;
+    transition-duration: .5s;
+    padding: 5px;
+}
+#window {
+  margin-left: 15px;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #d4be98;
+    border-bottom: 3px solid transparent;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: inherit;
+    border-bottom: 3px solid #d4be98;
+}
+
+#workspaces button.focused {
+    border-bottom: 3px solid #c5b18d;
+}
+
+#workspaces button.urgent {
+    background-color: #ea6962;
+}
+
+#mode {
+    background-color: #64727D;
+    border-bottom: 3px solid #d4be98;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#mpd {
+    padding: 0 10px;
+    margin: 0 4px;
+    color: #d4be98;
+}
+
+#backlight {
+  color: #d8a657;
+}
+
+#memory {
+  color: #d3869b;
+}
+
+#cpu {
+  color: #68948a;
+}
+
+#custom-media {
+  color: #a9b665;
+}
+
+#battery {
+  color: #7daea3;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+label:focus {
+    background-color: #000000;
+}
