@@ -1,4 +1,4 @@
-# i3 config file (v4)
+# Sway config file
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #
@@ -41,7 +41,7 @@ bindsym Mod1+Return exec kitty
 bindsym Mod1+Shift+q kill
 
 # start wofi (a program launcher)
-bindsym Mod1+d exec wofi --show drun -s ~/.config/wofi/config
+bindsym Mod1+d exec wofi -i --show drun -s ~/.config/wofi/config
 
 # change focus
 bindsym Mod1+$left focus left
@@ -179,7 +179,7 @@ gaps inner 10
 gaps outer 0
 
 # Set background image
-output "*" bg ~/Downloads/wallpaper.jpg fill
+output "*" bg ~/Downloads/wallpaper1.jpg fill
 
 # Show focus easily
 exec_always --no-startup-id flashfocus
@@ -205,9 +205,7 @@ input 1:1:AT_Translated_Set_2_keyboard {
 # Set touchpad rules
 input 1739:31251:SYNA2393:00_06CB:7A13_Touchpad {
     natural_scroll enabled
-    tap enabled
     scroll_factor 0.25
-    dwt enabled
 }
 
 # Laptop/monitor settings

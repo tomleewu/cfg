@@ -8,11 +8,15 @@
 }
 
 window#waybar {
-    background-color: rgba(40, 40, 40, 0.85);
-    color: #a89984;
+    background: transparent;
     transition-property: background-color;
     transition-duration: .5s;
-    padding: 5px;
+}
+
+window > box {
+    margin: 7px;
+    background-color: rgba(40, 40, 40, 0.85);
+    color: #a89984;
 }
 #window {
   margin-left: 15px;
@@ -23,7 +27,7 @@ window#waybar.hidden {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 5px;
     background-color: transparent;
     color: #d4be98;
     border-bottom: 3px solid transparent;
@@ -85,6 +89,10 @@ window#waybar.hidden {
 
 #battery {
   color: #7daea3;
+}
+
+#battery.charging {
+  color: #a9b665;
 }
 
 @keyframes blink {

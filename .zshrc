@@ -70,9 +70,7 @@ fi
 export GOPATH=/home/twu/go
 export GOBIN=/home/twu/go/bin
 export GPG_TTY=$(tty)
-# Spaceship prompt customizations
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_EXEC_TIME_SHOW=false
+
 export KEYTIMEOUT=1
 
 export NVM_DIR="$HOME/.nvm"

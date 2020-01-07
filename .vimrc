@@ -10,7 +10,6 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-Plug 'joshdick/onedark.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
@@ -50,6 +49,10 @@ let g:netrw_banner = 0
 
 " Tags
 set tags=./tags;,tags
+
+" Vim autocomplete
+set complete-=i
+
 " Gutentags
 "let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
 let g:gutentags_generate_on_new = 1
@@ -91,21 +94,15 @@ set ignorecase
 set incsearch
 set smartcase
 
+" Markdown preview
+nmap <C-m> <Plug>MarkdownPreview
+
 " Pasting settings
 nnoremap <F2> :set invpaste paste?<CR>
 set pastetoggle=<F2>
 set showmode
 
-
 " Enable linters & fixers (ALE)
-let g:ale_linters = {
-                        \'python':['flake8'],
-                        \}
-
-let g:ale_fixers = {
-                        \'python':['black'],
-                        \'html':['prettier'],
-                        \}
 let g:ale_fix_on_save = 1
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
