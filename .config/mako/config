@@ -3,4 +3,4 @@ text-color=#d4be98FF
 border-color=#72966cFF
 default-timeout=10000
 font=Noto Sans 11
-
+border-radius=2

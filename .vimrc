@@ -26,19 +26,29 @@ Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
 set number
-imap kj <C-[>
+inoremap <C-l> <Esc>
+inoremap kj <Esc>
 nnoremap ; :
+nnoremap <C-j> <C-e>
+nnoremap <C-k> <C-y>
+
+" remap split movements
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 set showcmd "Display incomplete commands
 set scrolloff=5
 
+" Quickly edit vimrc
+nnoremap cv :e $MYVIMRC<CR>
+
+" Yank to system clipboard
+set clipboard=unnamedplus
+
 " Centralize swap files
 set directory^=$HOME/.vim/swapfiles//
-
-" Copy paste
-set clipboard=exclude:.*
-vmap <C-c> :w !pbcopy<CR><CR>
-map <C-x> :!pbcopy<CR>
 
 " Move line up/down
 nnoremap _ ddp
@@ -60,6 +70,9 @@ let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
 let g:gutentags_generate_on_empty_buffer = 0
 set statusline+=%{gutentags#statusline()}
+
+" vim-go
+nnoremap <silent> <C-v> :GoVet<CR>
 
 set autoindent
 set expandtab
@@ -98,8 +111,8 @@ set smartcase
 nmap <C-m> <Plug>MarkdownPreview
 
 " Pasting settings
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
+nnoremap <C-p> :set invpaste paste?<CR>
+set pastetoggle=<C-p>
 set showmode
 
 " Enable linters & fixers (ALE)
@@ -116,6 +129,14 @@ if (empty($TMUX))
   if (has("termguicolors"))
     set termguicolors
   endif
+endif
+
+" Make colors match while in tmux
+let &t_ut=''
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
 "vim-airline / theme settings

@@ -17,13 +17,6 @@ font pango:DejaVu Sans Mono 11
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn't scale on retina/hidpi displays.
-
 # use these keys for focus, movement, and resize directions when reaching for
 # the arrows is not convenient
 set $up k
@@ -201,6 +194,9 @@ input 1241:32777:OBINLB_USB-HID_Keyboard {
 input 1:1:AT_Translated_Set_2_keyboard {
     xkb_options ctrl:nocaps
 }
+input 13:0:AnnePro2_P1_Keyboard {
+    xkb_options ctrl:nocaps
+}
 
 # Set touchpad rules
 input 1739:31251:SYNA2393:00_06CB:7A13_Touchpad {
@@ -213,6 +209,7 @@ set $laptop eDP-1
 bindswitch --reload lid:on output $laptop disable
 bindswitch --reload lid:off output $laptop enable
 output DP-1 scale 2
+exec_always pkill kanshi; exec kanshi
 
 # Bar
 bar {
