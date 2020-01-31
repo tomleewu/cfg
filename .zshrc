@@ -62,19 +62,15 @@ if _has fzf && _has ag; then
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
 
+export EDITOR='/usr/bin/vim'
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
   alias v='nvim'
+  export EDITOR='/usr/bin/nvim'
 fi
 
 export GOPATH=/home/twu/go
 export GOBIN=/home/twu/go/bin
 export GPG_TTY=$(tty)
-# Spaceship prompt customizations
-SPACESHIP_GOLANG_SHOW=false
-SPACESHIP_EXEC_TIME_SHOW=false
-export KEYTIMEOUT=1
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export KEYTIMEOUT=1
