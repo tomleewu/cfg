@@ -29,8 +29,6 @@ set number
 inoremap <C-l> <Esc>
 inoremap kj <Esc>
 nnoremap ; :
-nnoremap <C-j> <C-e>
-nnoremap <C-k> <C-y>
 
 " remap split movements
 nnoremap <C-h> <C-w>h
