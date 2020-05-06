@@ -166,7 +166,7 @@ bindsym Mod1+r mode "resize"
 default_border none
 
 # Lockscreen
-bindsym Mod1+Shift+x exec swaylock-blur
+bindsym Mod1+Shift+x exec systemctl suspend
 
 gaps inner 10
 gaps outer 0
@@ -175,13 +175,20 @@ gaps outer 0
 output "*" bg ~/Downloads/wallpaper1.jpg fill
 
 # Show focus easily
-exec_always --no-startup-id flashfocus
+# exec_always --no-startup-id flashfocus
+exec_always python3 ~/.config/sway/scripts/fader.py
+
+# Suspend wake to swaylock
+set $lock_bg ~/Downloads/wallpaper1.jpg
+exec swayidle -w \
+         timeout 360 'swaylock -f -c 000000 -i $lock_bg' \
+         timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000 -i $lock_bg'
 
 # Bind Backlight with light
-#bindsym XF86MonBrightnessUp exec light -A 5;
-#bindsym XF86MonBrightnessDown exec light -U 5;
-bindsym XF86MonBrightnessUp exec brightnessControl.sh up;
-bindsym XF86MonBrightnessDown exec brightnessControl.sh down;
+bindsym XF86MonBrightnessUp exec light -A 5;
+bindsym XF86MonBrightnessDown exec light -U 5;
 
 # Audio keys
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
@@ -209,12 +216,14 @@ set $laptop eDP-1
 bindswitch --reload lid:on output $laptop disable
 bindswitch --reload lid:off output $laptop enable
 output DP-1 scale 2
+# output DP-1 pos 0 0 res 2560x1440
 exec_always pkill kanshi; exec kanshi
 
 # Bar
 bar {
     swaybar_command waybar
 }
+exec nm-applet --indicator # NetworkManager tray applet
 
 # Enable notifications
 exec mako
@@ -222,3 +231,4 @@ bindsym Mod1+q exec makoctl dismiss
 
 # Screenshots
 bindsym Mod1+Shift+a exec grim -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym Print exec grim

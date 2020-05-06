@@ -12,17 +12,16 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'w0rp/ale'
-Plug 'mattn/emmet-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-surround'
 Plug 'romainl/vim-cool'
-Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
 Plug 'sainnhe/gruvbox-material'
+Plug 'tpope/vim-rhubarb'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 set number
@@ -56,13 +55,14 @@ nnoremap - dd2kp
 let g:netrw_banner = 0
 
 " Tags
-set tags=./tags;,tags
+set tags=./tags,tags;$HOME
 
 " Vim autocomplete
 set complete-=i
 
 " Gutentags
-"let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
+set tags+=$HOME/.vim/ctags/
+let g:gutentags_cache_dir='~/.vim/ctags/'
 let g:gutentags_generate_on_new = 1
 let g:gutentags_generate_on_missing = 1
 let g:gutentags_generate_on_write = 1
@@ -71,6 +71,8 @@ set statusline+=%{gutentags#statusline()}
 
 " vim-go
 nnoremap <silent> <C-v> :GoVet<CR>
+nnoremap <silent> <C-c> :GoTestCompile<CR>
+let g:go_test_show_name=1
 
 set autoindent
 set expandtab
@@ -91,7 +93,7 @@ let mapleader = (' ')
 nnoremap <leader>b :ls<cr>:b<space>
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
-map <leader>d :bd<cr>
+map <leader>d :BD<cr>
 set hidden "Allow for buffer switching without saves
 
 " fzf shortcuts
@@ -99,6 +101,9 @@ nmap <leader>; :Buffers<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>/ :Rg<CR>
 nmap <leader>t :Tags<CR>
+" don't search filenames
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
+let g:go_fmt_command = "goimports"
 
 " Searching settings
 set ignorecase
@@ -109,12 +114,9 @@ set smartcase
 nmap <C-m> <Plug>MarkdownPreview
 
 " Pasting settings
-nnoremap <C-p> :set invpaste paste?<CR>
-set pastetoggle=<C-p>
+nnoremap <C-o> :set invpaste paste?<CR>
+set pastetoggle=<C-o>
 set showmode
-
-" Enable linters & fixers (ALE)
-let g:ale_fix_on_save = 1
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -128,6 +130,45 @@ if (empty($TMUX))
     set termguicolors
   endif
 endif
+
+" COC settigs
+set nobackup
+set nowritebackup
+set cmdheight=2
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+" Close window once autocompleted
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" Apply fix to line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+nmap <silent> gn <Plug>(coc-diagnostic-prev)
+nmap <silent> gp <Plug>(coc-diagnostic-next)
+
+" Wayland clipboard provider that strips carriage returns (GTK3 issue).
+" This is needed because currently there's an issue where GTK3 applications on
+" Wayland contain carriage returns at the end of the lines (this is a root
+" issue that needs to be fixed).
+let g:clipboard = {
+      \   'name': 'wayland-strip-carriage',
+      \   'copy': {
+      \      '+': 'wl-copy --foreground --type text/plain',
+      \      '*': 'wl-copy --foreground --type text/plain --primary',
+      \    },
+      \   'paste': {
+      \      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
+      \      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
+      \   },
+      \   'cache_enabled': 1,
+      \ }
 
 " Make colors match while in tmux
 let &t_ut=''

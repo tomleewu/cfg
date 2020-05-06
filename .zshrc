@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/go/bin:$HOME/bin:/usr/local/bin:$PATH:~/.local/bin:$PATH
+export PATH=$HOME/go/bin:$HOME/bin:/usr/local/bin:$PATH:~/.local/bin:$PATH:$HOME/.npm/bin
 
 # Path to your oh-my-zsh installation.
 # export ZSH=/Users/tomleewu/.oh-my-zsh
@@ -17,7 +17,7 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z tmux kubectl zsh-autosuggestions vi-mode)
+plugins=(git z tmux kubectl zsh-autosuggestions vi-mode fzf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -30,6 +30,8 @@ _has() {
   return $( whence $1 >/dev/null )
 }
 
+# Configure tmux plugin
+export ZSH_TMUX_AUTOSTART=true
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -57,7 +59,7 @@ _has() {
 #
 # fzf + ag configuration
 if _has fzf && _has ag; then
-  export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+  export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git --nocolor -g ""'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
@@ -73,17 +75,17 @@ export GOPATH=/home/twu/go
 export GOBIN=/home/twu/go/bin
 export GPG_TTY=$(tty)
 
-export KEYTIMEOUT=1
+export KEYTIMEOUT=30
+bindkey "kj" vi-cmd-mode
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# vpn
 vpn() {
     systemctl "$@" wg-quick@wg0.service
 }
-# wifi
+
 wifi() {
     nmcli device wifi "$@"
 }
