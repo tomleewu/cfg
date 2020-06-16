@@ -15,7 +15,7 @@ window#waybar {
 
 window > box {
     margin: 7px 10px 7px 10px;
-    background-color: rgba(40, 40, 40, 0.85);
+    background-color: rgba(41, 40, 40, .8);
     color: #a89984;
 }
 #window {

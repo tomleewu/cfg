@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["network", "pulseaudio", "cpu", "memory", "backlight", "battery", "battery#bat2", "tray"],
+    "modules-right": ["network", "pulseaudio", "idle_inhibitor", "cpu", "memory", "backlight", "battery", "battery#bat2", "tray"],
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -50,6 +50,13 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "  {essid}",
@@ -69,7 +76,7 @@
         "format-icons": {
             "headphones": "",
             "phone": "",
-            "portable": "",
+            "portable": "",
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"

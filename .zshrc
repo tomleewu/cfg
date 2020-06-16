@@ -67,9 +67,10 @@ fi
 export EDITOR='/usr/bin/vim'
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
-  alias v='nvim'
   export EDITOR='/usr/bin/nvim'
 fi
+
+export BAT_THEME="ansi-dark"
 
 export GOPATH=/home/twu/go
 export GOBIN=/home/twu/go/bin
@@ -77,6 +78,13 @@ export GPG_TTY=$(tty)
 
 export KEYTIMEOUT=30
 bindkey "kj" vi-cmd-mode
+
+# Force firefox to open in wayland
+export MOZ_DBUS_REMOTE=1
+
+# Enable https://github.com/clvv/fasd
+# eval "$(fasd --init auto)"
+# alias v='f -e vim'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -88,4 +96,22 @@ vpn() {
 
 wifi() {
     nmcli device wifi "$@"
+}
+
+# change cursor shape for different vi modes
+# https://unix.stackexchange.com/questions/433273/changing-cursor-style-based-on-mode-in-both-zsh-and-vim
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[2 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[6 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+  echo -ne '\e[6 q'
 }

@@ -1,8 +1,6 @@
 # Sway config file
 #
-# Please see https://i3wm.org/docs/userguide.html for a complete reference!
-#
-# This config file uses keycodes (bindsym) and was written for the QWERTY
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!  This config file uses keycodes (bindsym) and was written for the QWERTY
 # layout.
 #
 # To get a config file with the same key positions, but for your current
@@ -197,11 +195,9 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
 # Set caps-lock to control
 input 1241:32777:OBINLB_USB-HID_Keyboard {
     xkb_options ctrl:nocaps
+
 }
 input 1:1:AT_Translated_Set_2_keyboard {
-    xkb_options ctrl:nocaps
-}
-input 13:0:AnnePro2_P1_Keyboard {
     xkb_options ctrl:nocaps
 }
 
@@ -215,7 +211,9 @@ input 1739:31251:SYNA2393:00_06CB:7A13_Touchpad {
 set $laptop eDP-1
 bindswitch --reload lid:on output $laptop disable
 bindswitch --reload lid:off output $laptop enable
-output DP-1 scale 2
+xwayland force scale 2
+exec xsettingsd
+# output DP-1 scale 2
 # output DP-1 pos 0 0 res 2560x1440
 exec_always pkill kanshi; exec kanshi
 
@@ -227,8 +225,17 @@ exec nm-applet --indicator # NetworkManager tray applet
 
 # Enable notifications
 exec mako
-bindsym Mod1+q exec makoctl dismiss
 
 # Screenshots
 bindsym Mod1+Shift+a exec grim -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 bindsym Print exec grim
+
+# QWERTY
+input type:keyboard {
+    xkb_layout us
+    xkb_options ctrl:nocaps
+}
+
+# Switch layouts
+bindsym Mod1+q exec switch-keyboard-layout
+

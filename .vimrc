@@ -9,7 +9,7 @@ call plug#begin()
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/clever-f.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
@@ -22,6 +22,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'sainnhe/gruvbox-material'
 Plug 'tpope/vim-rhubarb'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'SirVer/ultisnips'
 call plug#end()
 
 set number
@@ -71,7 +72,7 @@ set statusline+=%{gutentags#statusline()}
 
 " vim-go
 nnoremap <silent> <C-v> :GoVet<CR>
-nnoremap <silent> <C-c> :GoTestCompile<CR>
+nnoremap <silent> <C-c> :GoTestFunc<CR>
 let g:go_test_show_name=1
 
 set autoindent
@@ -113,9 +114,12 @@ set smartcase
 " Markdown preview
 nmap <C-m> <Plug>MarkdownPreview
 
+" Clever F
+let g:clever_f_across_no_line = 1
+let g:clever_f_smart_case = 1
+let g:clever_f_mark_char_color = 'Visual'
+
 " Pasting settings
-nnoremap <C-o> :set invpaste paste?<CR>
-set pastetoggle=<C-o>
 set showmode
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
@@ -135,8 +139,23 @@ endif
 set nobackup
 set nowritebackup
 set cmdheight=2
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+set updatetime=300
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
@@ -164,8 +183,8 @@ let g:clipboard = {
       \      '*': 'wl-copy --foreground --type text/plain --primary',
       \    },
       \   'paste': {
-      \      '+': {-> systemlist('wl-paste --no-newline | tr -d "\r"')},
-      \      '*': {-> systemlist('wl-paste --no-newline --primary | tr -d "\r"')},
+      \      '+': {-> systemlist('wl-paste | tr -d "\r"')},
+      \      '*': {-> systemlist('wl-paste --primary | tr -d "\r"')},
       \   },
       \   'cache_enabled': 1,
       \ }
@@ -179,7 +198,7 @@ if exists('+termguicolors')
 endif
 
 "vim-airline / theme settings
-let g:gitgutter_override_sign_column_highlight=1
+autocmd ColorScheme * highlight! link SignColumn LineNr
 let g:airline_theme='gruvbox_material'
 let g:airline_powerline_fonts=1
 set background=dark
