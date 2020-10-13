@@ -32,7 +32,7 @@ bindsym Mod1+Return exec kitty
 bindsym Mod1+Shift+q kill
 
 # start wofi (a program launcher)
-bindsym Mod1+d exec wofi -i --show drun -s ~/.config/wofi/config
+bindsym Mod1+d exec rofi -show drun
 
 # change focus
 bindsym Mod1+$left focus left
@@ -193,11 +193,8 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%-
 
 # Set caps-lock to control
-input 1241:32777:OBINLB_USB-HID_Keyboard {
-    xkb_options ctrl:nocaps
-
-}
-input 1:1:AT_Translated_Set_2_keyboard {
+input type:keyboard {
+    xkb_layout us
     xkb_options ctrl:nocaps
 }
 
@@ -207,11 +204,15 @@ input 1739:31251:SYNA2393:00_06CB:7A13_Touchpad {
     scroll_factor 0.25
 }
 
+input 5426:92:Razer_Razer_DeathAdder_Elite {
+    accel_profile flat
+}
+
 # Laptop/monitor settings
 set $laptop eDP-1
 bindswitch --reload lid:on output $laptop disable
 bindswitch --reload lid:off output $laptop enable
-xwayland force scale 2
+# xwayland force scale 2
 exec xsettingsd
 # output DP-1 scale 2
 # output DP-1 pos 0 0 res 2560x1440
@@ -229,13 +230,4 @@ exec mako
 # Screenshots
 bindsym Mod1+Shift+a exec grim -g "$(slurp)" ~/screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 bindsym Print exec grim
-
-# QWERTY
-input type:keyboard {
-    xkb_layout us
-    xkb_options ctrl:nocaps
-}
-
-# Switch layouts
-bindsym Mod1+q exec switch-keyboard-layout
-
+exec "systemctl --user import-environment; systemctl --user start graphical-session.target"

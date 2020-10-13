@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["network", "pulseaudio", "idle_inhibitor", "cpu", "memory", "backlight", "battery", "battery#bat2", "tray"],
+    "modules-right": ["network", "pulseaudio", "idle_inhibitor", "cpu", "memory", "backlight", "battery", "tray"],
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -46,9 +46,6 @@
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
-    },
-    "battery#bat2": {
-        "bat": "BAT2"
     },
     "idle_inhibitor": {
         "format": "{icon}",
