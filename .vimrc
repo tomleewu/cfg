@@ -1,4 +1,4 @@
-" Plug (install if necessary)
+" --- Plugins --- "
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -6,26 +6,45 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin()
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
+Plug 'rhysd/clever-f.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
-Plug 'w0rp/ale'
-Plug 'mattn/emmet-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'Townk/vim-autoclose'
 Plug 'tpope/vim-surround'
-Plug 'romainl/vim-cool'
-Plug '/usr/local/opt/fzf'
+Plug 'romainl/vim-cool' " disables search highlighting after cursor movement
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb' " enables use of :Gbrowse to open files in GitHub 
 Plug 'sainnhe/gruvbox-material'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'christoomey/vim-tmux-navigator'
+" Plug 'ludovicchabant/vim-gutentags'
+Plug 'tpope/vim-sleuth'
 call plug#end()
 
+
+" --- Vim defaults --- "
 set number
+set backspace=indent,eol,start
+set showcmd  " Display incomplete commands
+set scrolloff=5
+set clipboard=unnamedplus " Yank to system clipboard
+set directory^=$HOME/.vim/swapfiles// " Centralize swap files
+set tags=./tags,tags;$HOME
+
+set ignorecase
+set incsearch
+set smartcase
+
+set showmode " Shows paste mode
+
+
+" --- Keyboard mappings --- "
 inoremap <C-l> <Esc>
 inoremap kj <Esc>
 nnoremap ; :
@@ -36,97 +55,102 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-set showcmd "Display incomplete commands
-set scrolloff=5
-
 " Quickly edit vimrc
-nnoremap cv :e $MYVIMRC<CR>
-
-" Yank to system clipboard
-set clipboard=unnamedplus
-
-" Centralize swap files
-set directory^=$HOME/.vim/swapfiles//
+nnoremap cv :e ~/.vimrc<CR>
 
 " Move line up/down
 nnoremap _ ddp
 nnoremap - dd2kp
-
-" Netrw settings
-let g:netrw_banner = 0
-
-" Tags
-set tags=./tags;,tags
-
-" Vim autocomplete
-set complete-=i
-
-" Gutentags
-"let g:gutentags_cache_dir = expand('~/.cache/vim/ctags/')
-let g:gutentags_generate_on_new = 1
-let g:gutentags_generate_on_missing = 1
-let g:gutentags_generate_on_write = 1
-let g:gutentags_generate_on_empty_buffer = 0
-set statusline+=%{gutentags#statusline()}
-
-" vim-go
-nnoremap <silent> <C-v> :GoVet<CR>
-
-set autoindent
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-
-" Python settings
-autocmd FileType python setlocal commentstring=#\ %s ts=4 sts=4 sw=4 "supports commenting
-
-" Set spacing in frontend
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
-autocmd Filetype css setlocal ts=2 sts=2 sw=2
-autocmd Filetype scss setlocal ts=2 sts=2 sw=2
 
 " Switching buffers
 let mapleader = (' ')
 nnoremap <leader>b :ls<cr>:b<space>
 map <leader>n :bn<cr>
 map <leader>p :bp<cr>
-map <leader>d :bd<cr>
+map <leader>d :BD<cr>
 set hidden "Allow for buffer switching without saves
 
-" fzf shortcuts
+" close quickfix list
+nnoremap <leader>c :cclose<CR>
+
+nnoremap <silent> <F5> :source ~/.vimrc<CR>
+
+
+" --- fzf --- "
 nmap <leader>; :Buffers<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>/ :Rg<CR>
 nmap <leader>t :Tags<CR>
 
-" Searching settings
-set ignorecase
-set incsearch
-set smartcase
+"don't search filenames in ripgrep
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
 
-" Markdown preview
-nmap <C-m> <Plug>MarkdownPreview
 
-" Pasting settings
-nnoremap <C-p> :set invpaste paste?<CR>
-set pastetoggle=<C-p>
-set showmode
+" --- Markdown preview --- "
+nmap <C-s> <Plug>MarkdownPreview
 
-" Enable linters & fixers (ALE)
-let g:ale_fix_on_save = 1
 
-"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" --- vim-go --- " 
+autocmd Filetype go nmap <C-v> <plug>(go-vet)
+autocmd Filetype go nmap <C-c> <plug>(go-test)
+autocmd Filetype go nmap <leader>r <plug>(go-fill-struct)
+let g:go_test_show_name=1
+let g:go_fmt_command = "goimports"
+let g:go_doc_popup_window = 1
+let g:go_auto_type_info = 1
+set updatetime=500 " show GoInfo after 500 ms
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+
+" --- Clever F --- "
+let g:clever_f_across_no_line = 1
+let g:clever_f_smart_case = 1
+let g:clever_f_mark_char_color = 'Visual'
+
+
+" --- coc-nvim --- "
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set signcolumn=yes
+
+nmap <silent> gn <Plug>(coc-diagnostic-next)
+nmap <silent> gp <Plug>(coc-diagnostic-prev)
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" Close window once autocompleted
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
   endif
-  if (has("termguicolors"))
+endfunction
+
+
+
+" --- Aesthetics --- "
+if (has("termguicolors"))
     set termguicolors
-  endif
 endif
 
 " Make colors match while in tmux
@@ -138,7 +162,7 @@ if exists('+termguicolors')
 endif
 
 "vim-airline / theme settings
-let g:gitgutter_override_sign_column_highlight=1
+autocmd ColorScheme * highlight! link SignColumn LineNr
 let g:airline_theme='gruvbox_material'
 let g:airline_powerline_fonts=1
 set background=dark
