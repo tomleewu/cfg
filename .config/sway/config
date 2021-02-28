@@ -32,7 +32,7 @@ bindsym Mod1+Return exec kitty
 bindsym Mod1+Shift+q kill
 
 # start wofi (a program launcher)
-bindsym Mod1+d exec rofi -show drun
+bindsym Mod1+d exec wofi --show drun
 
 # change focus
 bindsym Mod1+$left focus left
@@ -216,6 +216,7 @@ bindswitch --reload lid:off output $laptop enable
 exec xsettingsd
 # output DP-1 scale 2
 # output DP-1 pos 0 0 res 2560x1440
+output DP-1 pos 0 0 res 3840x2160
 exec_always pkill kanshi; exec kanshi
 
 # Bar
