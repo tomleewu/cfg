@@ -1,0 +1,32 @@
+{:profiles
+	{:Default 
+		{:default true
+			:sim     50
+			:delay   500
+			:alone   1000
+			:held    500
+			}
+		}
+	:layers {
+		:right-alt {:key :right_alt}
+					}
+	:main [
+		{:des "Create right alt layer",
+			:rules [
+				:right-alt
+					[:d :open_bracket],
+					[:!Rd :!Ropen_bracket],
+					[:f :close_bracket],
+					[:!Rf :!Rclose_bracket],
+					[:a :!S9],
+					[:s :!S0],
+					[:semicolon :slash],
+					[:!Ssemicolon :!Sslash],
+					[:r :quote],
+					[:!Rr :!Rquote],
+				]
+			},
+		{:des   "caps_lock to esc when pressed alone, to ctrl as modifier"
+         :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
+		]
+}
