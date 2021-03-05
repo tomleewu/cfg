@@ -23,8 +23,9 @@ Plug 'tpope/vim-rhubarb' " enables use of :Gbrowse to open files in GitHub
 Plug 'sainnhe/gruvbox-material'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'ludovicchabant/vim-gutentags'
-Plug 'tpope/vim-sleuth'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'tpope/vim-sleuth' " automated indention
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 
@@ -104,6 +105,7 @@ set updatetime=500 " show GoInfo after 500 ms
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 
+
 " --- Clever F --- "
 let g:clever_f_across_no_line = 1
 let g:clever_f_smart_case = 1
@@ -146,6 +148,35 @@ function! s:show_documentation()
   endif
 endfunction
 
+
+" --- vim-terraform --- "
+let g:terraform_fmt_on_save=1
+
+
+" --- gutentags --- "
+let g:gutentags_ctags_exclude = [
+\  '*.git', '*.svn', '*.hg',
+\  'cache', 'build', 'dist', 'bin', 'node_modules', 'bower_components',
+\  '*-lock.json',  '*.lock',
+\  '*.min.*',
+\  '*.bak',
+\  '*.zip',
+\  '*.pyc',
+\  '*.class',
+\  '*.sln',
+\  '*.csproj', '*.csproj.user',
+\  '*.tmp',
+\  '*.cache',
+\  '*.vscode',
+\  '*.pdb',
+\  '*.exe', '*.dll', '*.bin',
+\  '*.mp3', '*.ogg', '*.flac',
+\  '*.swp', '*.swo',
+\  '.DS_Store', '*.plist',
+\  '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png', '*.svg',
+\  '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+\  '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx', '*.xls',
+\]
 
 
 " --- Aesthetics --- "
