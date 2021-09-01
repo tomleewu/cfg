@@ -37,6 +37,7 @@ set scrolloff=5
 set clipboard=unnamedplus " Yank to system clipboard
 set directory^=$HOME/.vim/swapfiles// " Centralize swap files
 set tags=./tags,tags;$HOME
+set cursorline
 
 set ignorecase
 set incsearch

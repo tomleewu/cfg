@@ -16,6 +16,9 @@ ZSH_THEME="common"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git z tmux kubectl zsh-autosuggestions vi-mode fzf docker)
 
+# Configure tmux plugin
+export ZSH_TMUX_AUTOSTART=true
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -27,8 +30,6 @@ _has() {
   return $( whence $1 >/dev/null )
 }
 
-# Configure tmux plugin
-export ZSH_TMUX_AUTOSTART=true
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -41,8 +42,6 @@ export ZSH_TMUX_AUTOSTART=true
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias lg='lazygit'
-
-alias c='clusterctl'
 
 # fzf + rg configuration
 if _has fzf && _has rg; then
@@ -58,7 +57,7 @@ if type nvim > /dev/null 2>&1; then
   export EDITOR='/usr/local/bin/nvim'
 fi
 
-export BAT_THEME="ansi-dark"
+export BAT_THEME="ansi"
 
 # Go environment vars
 export GOPATH=$HOME/go
@@ -89,10 +88,7 @@ zle-line-init() {
 # Fix weird directory colors from ls
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
-# Use Homebrew python and pip
-alias python=/usr/local/bin/python3
-alias pip=/usr/local/bin/pip3
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Use pyenv
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
