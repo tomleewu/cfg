@@ -21,7 +21,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " enables use of :Gbrowse to open files in GitHub 
 Plug 'sainnhe/gruvbox-material'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-sleuth' " automated indention
@@ -47,7 +46,6 @@ set showmode " Shows paste mode
 
 
 " --- Keyboard mappings --- "
-inoremap <C-l> <Esc>
 inoremap kj <Esc>
 nnoremap ; :
 
@@ -111,43 +109,6 @@ map <C-m> :cprevious<CR>
 let g:clever_f_across_no_line = 1
 let g:clever_f_smart_case = 1
 let g:clever_f_mark_char_color = 'Visual'
-
-
-" --- coc-nvim --- "
-set nobackup
-set nowritebackup
-set cmdheight=2
-set updatetime=300
-set signcolumn=yes
-
-nmap <silent> gn <Plug>(coc-diagnostic-next)
-nmap <silent> gp <Plug>(coc-diagnostic-prev)
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
-
-" Close window once autocompleted
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 
 " --- vim-terraform --- "
