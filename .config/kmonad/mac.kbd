@@ -1,0 +1,56 @@
+#| --------------------------------------------------------------------------
+
+                          KMonad: US ansi 60% template
+
+  This file contains the `defsrc` configuration for a standard US-ansi 60%
+  keyboard. Modelled on a standard DAS-keyboard 100% with the numpad, function
+  keys, arrows, and home-cluster removed. Copy out the 'defsrc' layer to start
+  your own keyboard configuration. Copy out the `deflayer` template to easily
+  start a new layer with matching `transparent` buttons.
+
+(deflayer name
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    _
+)
+
+  -------------------------------------------------------------------------- |#
+(defcfg
+  ;; For MacOS
+  input  (iokit-name "USB-HID Gaming Keyboard")
+  output (kext)
+
+  fallthrough true
+  allow-cmd   false
+)
+
+(defalias
+  altlay   (tap-next ralt (layer-toggle right-alt))
+  cesc   (tap-hold-next-release 75 esc lctrl)
+)
+
+(defsrc
+  grv       1    2    3    4    5    6    7    8    9    0    -    =    \
+  tab       q    w    e    r    t    y    u    i    o    p    [    ]    bspc 
+  caps      a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft      z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt                spc            ralt      rmet rctl 
+)
+
+(deflayer widemod
+  grv       1    2    3    4    5    6   =   7    8    9    0    -    \
+  tab       q    w    e    r    t    [   y   u    i    o    p    '    bspc
+  @cesc      a    s    d    f    g    ]   h   j    k    l    ;    ret
+  lsft      z    x    c    v    b    /   n    m    ,    .   rsft
+  lctl lmet lalt                spc            @altlay      rmet rctl
+)
+
+(deflayer right-alt
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    =    [    ]    _    _    _    _    _    _    _    _
+  _    _    _    _    _    _    _    _    _    _    _    _
+  _    _    _              _              _    _    _    
+)
