@@ -10,6 +10,7 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="common"
 
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -22,7 +23,6 @@ export ZSH_TMUX_AUTOSTART=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # Returns whether the given command is executable or aliased.
@@ -45,7 +45,7 @@ alias lg='lazygit'
 
 # fzf + rg configuration
 if _has fzf && _has rg; then
-  export FZF_DEFAULT_COMMAND='rg --hidden -g "!{node_modules,.git}" --files'
+  export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore-vcs -g "!{node_modules,.git}" --files'
   export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
   export FZF_CTRL_T_COMMAND='fd --type file --hidden --no-ignore'
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -54,7 +54,7 @@ fi
 export EDITOR='/usr/bin/vim'
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
-  export EDITOR='/usr/local/bin/nvim'
+  export EDITOR='/opt/homebrew/bin/nvim'
 fi
 
 export BAT_THEME="ansi"
@@ -92,3 +92,7 @@ export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -22,9 +22,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " enables use of :Gbrowse to open files in GitHub 
 Plug 'sainnhe/gruvbox-material'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-sleuth' " automated indention
 Plug 'hashivim/vim-terraform'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
@@ -42,7 +42,12 @@ set ignorecase
 set incsearch
 set smartcase
 
-set showmode " Shows paste mode
+set noshowmode
+
+set undofile " Maintain undo history between sessions
+set undodir=~/.vim/undodir
+
+set autoread " Automatically read changed files
 
 
 " --- Keyboard mappings --- "
@@ -64,15 +69,10 @@ nnoremap - dd2kp
 
 " Switching buffers
 let mapleader = (' ')
-nnoremap <leader>b :ls<cr>:b<space>
-map <leader>n :bn<cr>
-map <leader>p :bp<cr>
 map <leader>d :BD<cr>
 set hidden "Allow for buffer switching without saves
 
-" close quickfix list
-nnoremap <leader>c :cclose<CR>
-
+" Reload vimrc
 nnoremap <silent> <F5> :source ~/.vimrc<CR>
 
 
@@ -94,15 +94,32 @@ nmap <C-s> <Plug>MarkdownPreview
 
 " --- vim-go --- " 
 autocmd Filetype go nmap <C-v> <plug>(go-vet)
-autocmd Filetype go nmap <C-c> <plug>(go-test)
-autocmd Filetype go nmap <leader>r <plug>(go-fill-struct)
+autocmd Filetype go nmap <C-c> <plug>(go-test-func)
+" autocmd Filetype go nmap <C-c> <plug>(go-test)
+nmap <leader>r :GoFillStruct<cr>
+autocmd FileType go nmap <Leader>s <Plug>(go-implements)
+autocmd BufEnter *.go nmap <leader>i  <Plug>(go-info)
 let g:go_test_show_name=1
 let g:go_fmt_command = "goimports"
 let g:go_doc_popup_window = 1
-let g:go_auto_type_info = 1
+let g:go_auto_type_info = 0
 set updatetime=500 " show GoInfo after 500 ms
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
+" Disable while using coc-nvim and coc-go
+let g:go_gopls_enabled = 1
+let g:go_gopls_options = ['-remote=auto']
+let g:go_code_completion_enabled = 0
+let g:go_auto_sameids = 0
+let g:go_fmt_autosave = 1
+let g:go_def_mapping_enabled = 0
+let g:go_diagnostics_enabled = 0
+let g:go_echo_go_info = 0
+let g:go_metalinter_enabled = 0
+
+
+" --- Fugitive --- "
+nmap <leader>gs :Git<CR>
 
 
 " --- Clever F --- "
@@ -112,33 +129,52 @@ let g:clever_f_mark_char_color = 'Visual'
 
 
 " --- vim-terraform --- "
-let g:terraform_fmt_on_save=1
+" let g:terraform_fmt_on_save=1
 
 
-" --- gutentags --- "
-let g:gutentags_ctags_exclude = [
-\  '*.git', '*.svn', '*.hg',
-\  'cache', 'build', 'dist', 'bin', 'node_modules', 'bower_components',
-\  '*-lock.json',  '*.lock',
-\  '*.min.*',
-\  '*.bak',
-\  '*.zip',
-\  '*.pyc',
-\  '*.class',
-\  '*.sln',
-\  '*.csproj', '*.csproj.user',
-\  '*.tmp',
-\  '*.cache',
-\  '*.vscode',
-\  '*.pdb',
-\  '*.exe', '*.dll', '*.bin',
-\  '*.mp3', '*.ogg', '*.flac',
-\  '*.swp', '*.swo',
-\  '.DS_Store', '*.plist',
-\  '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png', '*.svg',
-\  '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
-\  '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx', '*.xls',
-\]
+" --- vim-fugitive --- "
+
+
+" --- coc-nvim --- "
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+ if (index([‘vim’,’help’], &filetype) >= 0)
+ execute ‘h ‘.expand(‘<cword>’)
+ else
+ call CocAction(‘doHover’)
+ endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Open diagnostics window
+nnoremap <silent> <leader>cd :CocDiagnostics<cr>
+nnoremap <silent> <leader>n :lnext<cr>
+nnoremap <silent> <leader>p :lprev<cr>
 
 
 " --- Aesthetics --- "
