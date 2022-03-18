@@ -5,7 +5,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rhysd/clever-f.vim'
@@ -23,7 +23,6 @@ Plug 'tpope/vim-rhubarb' " enables use of :Gbrowse to open files in GitHub
 Plug 'sainnhe/gruvbox-material'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sleuth' " automated indention
-Plug 'hashivim/vim-terraform'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
@@ -48,6 +47,8 @@ set undofile " Maintain undo history between sessions
 set undodir=~/.vim/undodir
 
 set autoread " Automatically read changed files
+
+tnoremap <C-t> <C-\><C-n> " Exit terminal mode using ctrl + t
 
 
 " --- Keyboard mappings --- "
@@ -83,7 +84,7 @@ nmap <leader>/ :Rg<CR>
 nmap <leader>t :Tags<CR>
 
 "don't search filenames in ripgrep
-command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --no-ignore-vcs --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
 
@@ -95,10 +96,23 @@ nmap <C-s> <Plug>MarkdownPreview
 " --- vim-go --- " 
 autocmd Filetype go nmap <C-v> <plug>(go-vet)
 autocmd Filetype go nmap <C-c> <plug>(go-test-func)
-" autocmd Filetype go nmap <C-c> <plug>(go-test)
-nmap <leader>r :GoFillStruct<cr>
+nmap <C-i> :GoFillStruct<cr>
 autocmd FileType go nmap <Leader>s <Plug>(go-implements)
-autocmd BufEnter *.go nmap <leader>i  <Plug>(go-info)
+"debug
+nmap <leader>dt :GoDebugTestFunc<cr>
+nmap <leader>ds :GoDebugStop<cr>
+nmap <Leader>db :GoDebugBreakpoint<cr>
+nmap <Leader>dr :GoDebugRestart<cr>
+let g:go_debug_mappings = {
+      \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
+      \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
+      \ '(go-debug-step)': {'key': 's'},
+      \ '(go-debug-print)': {'key': 'p'},
+  \}
+let g:go_debug_windows = {
+      \ 'vars':       'leftabove 50vnew',
+      \ 'stack':      'leftabove 10new',
+      \ }
 let g:go_test_show_name=1
 let g:go_fmt_command = "goimports"
 let g:go_doc_popup_window = 1
@@ -109,13 +123,17 @@ map <C-m> :cprevious<CR>
 " Disable while using coc-nvim and coc-go
 let g:go_gopls_enabled = 1
 let g:go_gopls_options = ['-remote=auto']
-let g:go_code_completion_enabled = 0
+let g:go_code_completion_enabled = 1
 let g:go_auto_sameids = 0
-let g:go_fmt_autosave = 1
-let g:go_def_mapping_enabled = 0
+" For some reason, enabling go_fmt_autosave makes coc.nvim remove itself from
+" a buffer. Therefore, let coc.nvim format and let vim-go run goimports
+let g:go_fmt_autosave = 0
+let g:go_imports_autosave = 1
 let g:go_diagnostics_enabled = 0
 let g:go_echo_go_info = 0
 let g:go_metalinter_enabled = 0
+" coc-go
+autocmd FileType go nmap gtd :CocCommand go.gopls.tidy<cr>
 
 
 " --- Fugitive --- "
@@ -126,13 +144,6 @@ nmap <leader>gs :Git<CR>
 let g:clever_f_across_no_line = 1
 let g:clever_f_smart_case = 1
 let g:clever_f_mark_char_color = 'Visual'
-
-
-" --- vim-terraform --- "
-" let g:terraform_fmt_on_save=1
-
-
-" --- vim-fugitive --- "
 
 
 " --- coc-nvim --- "
@@ -148,10 +159,14 @@ set shortmess+=c
 set signcolumn=yes
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gd <Plug>(coc-definition) Prefer to use vim-go go_def which
+" jumps back to where go_def was triggered
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Format code upon save
+autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.formatDocument')
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

@@ -593,6 +593,16 @@
                 },
                 {
                     "from": {
+                        "key_code": "h"
+                    },
+                    "to": [
+                        {
+                            "key_code": "close_bracket"
+                        }
+                    ]
+                },
+                {
+                    "from": {
                         "key_code": "hyphen"
                     },
                     "to": [
@@ -753,11 +763,51 @@
                 },
                 {
                     "from": {
-                        "key_code": "h"
+                        "key_code": "z"
                     },
                     "to": [
                         {
-                            "key_code": "close_bracket"
+                            "key_code": "x"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "key_code": "x"
+                    },
+                    "to": [
+                        {
+                            "key_code": "c"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "key_code": "c"
+                    },
+                    "to": [
+                        {
+                            "key_code": "v"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "key_code": "v"
+                    },
+                    "to": [
+                        {
+                            "key_code": "b"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "key_code": "b"
+                    },
+                    "to": [
+                        {
+                            "key_code": "z"
                         }
                     ]
                 }
