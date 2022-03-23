@@ -10,6 +10,15 @@
 	:layers {
 		:right-alt {:key :right_alt}
 					}
+	:applications {
+		:Browsers [
+			"^com\\.google\\.Chrome$"
+			"^com\\.apple\\.Safari$"
+		]
+		:Terminals [
+			"^net\\.kovidgoyal\\.kitty$"
+		]
+	}
 	:main [
 		{:des "Create right alt layer",
 			:rules [
@@ -27,6 +36,21 @@
 				]
 			},
 		{:des   "caps_lock to esc when pressed alone, to ctrl as modifier"
-         :rules [[:##caps_lock :left_control nil {:alone :escape}]]}
+		 :rules [[:##caps_lock :left_control nil {:alone :escape}]]},
+		{:des   "shift to z when pressed alone, to shift as modifier"
+		 :rules [[:##left_shift :left_shift nil {:alone :z}]]},
+		{:des "extended layer with right option",
+		     :rules [
+					:right-alt
+			    [:j :left_arrow]
+			    [:k :down_arrow]
+			    [:i :up_arrow]
+			    [:l :right_arrow]
+		      ]},
+		{:des "extended layer with left control",
+		     :rules [
+			    [:!Tsemicolon :!Odelete_or_backspace [:Browsers]]
+			    [:!Tsemicolon :!Tw [:Terminals]]
+		      ]}
 		]
 }
