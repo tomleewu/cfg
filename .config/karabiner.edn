@@ -46,11 +46,19 @@
 			    [:k :down_arrow]
 			    [:i :up_arrow]
 			    [:l :right_arrow]
+			    [:!Tj :!Tleft_arrow [:Terminals]]
+			    [:!Tk :!Tdown_arrow [:Terminals]]
+			    [:!Ti :!Tup_arrow [:Terminals]]
+			    [:!Tl :!Tright_arrow [:Terminals]]
+			    [:!Tj :!Eleft_arrow]
+			    [:!Tk :!Edown_arrow]
+			    [:!Ti :!Eup_arrow]
+			    [:!Tl :!Eright_arrow]
 		      ]},
 		{:des "extended layer with left control",
 		     :rules [
-			    [:!Tsemicolon :!Odelete_or_backspace [:Browsers]]
 			    [:!Tsemicolon :!Tw [:Terminals]]
+			    [:!Tsemicolon :!Odelete_or_backspace]
 		      ]}
 		]
 }
