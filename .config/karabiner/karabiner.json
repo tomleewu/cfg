@@ -278,6 +278,19 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "p"
+          },
+          "to" : [ {
+            "shell_command" : "osascript -e 'tell application \"Music\" to playpause'"
+          } ],
+          "conditions" : [ {
+            "name" : "right-alt",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "j",
             "modifiers" : {
               "mandatory" : [ "left_control" ]
@@ -504,6 +517,32 @@
         "is_pointing_device" : false,
         "product_id" : 833,
         "vendor_id" : 1452
+      },
+      "ignore" : false,
+      "manipulate_caps_lock_led" : true,
+      "simple_modifications" : [ {
+        "from" : {
+          "key_code" : "backslash"
+        },
+        "to" : [ {
+          "key_code" : "delete_or_backspace"
+        } ]
+      }, {
+        "from" : {
+          "key_code" : "delete_or_backspace"
+        },
+        "to" : [ {
+          "key_code" : "backslash"
+        } ]
+      } ]
+    }, {
+      "disable_built_in_keyboard_if_exists" : false,
+      "fn_function_keys" : [ ],
+      "identifiers" : {
+        "is_keyboard" : true,
+        "is_pointing_device" : false,
+        "product_id" : 615,
+        "vendor_id" : 76
       },
       "ignore" : false,
       "manipulate_caps_lock_led" : true,

@@ -13,7 +13,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'Townk/vim-autoclose'
-Plug 'tpope/vim-surround'
 Plug 'romainl/vim-cool' " disables search highlighting after cursor movement
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -24,6 +23,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sleuth' " automated indention
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'ggandor/lightspeed.nvim'
 call plug#end()
 
 
@@ -93,19 +93,26 @@ let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --ma
 nmap <C-s> <Plug>MarkdownPreview
 
 
+
+" --- lightspeed --- "
+nmap s <Plug>Lightspeed_omni_s
+
+
 " --- vim-go --- " 
 autocmd Filetype go nmap <C-v> <plug>(go-vet)
 autocmd Filetype go nmap <C-c> <plug>(go-test-func)
-nmap <C-i> :GoFillStruct<cr>
-autocmd FileType go nmap <Leader>s <Plug>(go-implements)
+autocmd Filetype go nmap <Leader>i :GoFillStruct<cr>
+autocmd Filetype go nmap <Leader>r :GoRename<cr>
+autocmd Filetype go nmap <Leader>t :GoAddTags<cr>
 "debug
 nmap <leader>dt :GoDebugTestFunc<cr>
 nmap <leader>ds :GoDebugStop<cr>
-nmap <Leader>db :GoDebugBreakpoint<cr>
+nmap <Leader>dn :GoDebugBreakpoint<cr>
 nmap <Leader>dr :GoDebugRestart<cr>
 let g:go_debug_mappings = {
       \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
       \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
+      \ '(go-debug-stop)': {'key': 'q'},
       \ '(go-debug-step)': {'key': 's'},
       \ '(go-debug-print)': {'key': 'p'},
   \}
@@ -114,6 +121,7 @@ let g:go_debug_windows = {
       \ 'stack':      'leftabove 10new',
       \ }
 let g:go_test_show_name=1
+let g:go_test_timeout='60s'
 let g:go_fmt_command = "goimports"
 let g:go_doc_popup_window = 1
 let g:go_auto_type_info = 0
@@ -125,10 +133,6 @@ let g:go_gopls_enabled = 1
 let g:go_gopls_options = ['-remote=auto']
 let g:go_code_completion_enabled = 1
 let g:go_auto_sameids = 0
-" For some reason, enabling go_fmt_autosave makes coc.nvim remove itself from
-" a buffer. Therefore, let coc.nvim format and let vim-go run goimports
-let g:go_fmt_autosave = 0
-let g:go_imports_autosave = 1
 let g:go_diagnostics_enabled = 0
 let g:go_echo_go_info = 0
 let g:go_metalinter_enabled = 0
@@ -164,9 +168,6 @@ set signcolumn=yes
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-" Format code upon save
-autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.formatDocument')
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>

@@ -46,6 +46,7 @@
 			    [:k :down_arrow]
 			    [:i :up_arrow]
 			    [:l :right_arrow]
+			    [:p "osascript -e 'tell application \"Music\" to playpause'"]
 			    [:!Tj :!Tleft_arrow [:Terminals]]
 			    [:!Tk :!Tdown_arrow [:Terminals]]
 			    [:!Ti :!Tup_arrow [:Terminals]]
