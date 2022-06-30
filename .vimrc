@@ -23,7 +23,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sleuth' " automated indention
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'ggandor/lightspeed.nvim'
+Plug 'ggandor/leap.nvim'
 call plug#end()
 
 
@@ -92,10 +92,6 @@ let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --ma
 " --- Markdown preview --- "
 nmap <C-s> <Plug>MarkdownPreview
 
-
-
-" --- lightspeed --- "
-nmap s <Plug>Lightspeed_omni_s
 
 
 " --- vim-go --- " 
