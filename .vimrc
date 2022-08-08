@@ -180,8 +180,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
 
 " Open diagnostics window
 nnoremap <silent> <leader>cd :CocDiagnostics<cr>

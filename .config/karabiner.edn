@@ -55,6 +55,8 @@
 			    [:!Tk :!Edown_arrow]
 			    [:!Ti :!Eup_arrow]
 			    [:!Tl :!Eright_arrow]
+					[:c :!Cc]
+					[:v :!Cv]
 		      ]},
 		{:des "extended layer with left control",
 		     :rules [

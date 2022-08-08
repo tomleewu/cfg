@@ -437,6 +437,34 @@
             "type" : "variable_if"
           } ],
           "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "key_code" : "c",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "name" : "right-alt",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "v"
+          },
+          "to" : [ {
+            "key_code" : "v",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "name" : "right-alt",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
         } ]
       }, {
         "description" : "extended layer with left control",
