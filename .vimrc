@@ -6,8 +6,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-lualine/lualine.nvim'
 Plug 'rhysd/clever-f.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
@@ -24,6 +24,8 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sleuth' " automated indention
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ggandor/leap.nvim'
+Plug 'rose-pine/neovim'
+Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
 call plug#end()
 
 
@@ -91,7 +93,6 @@ let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --ma
 
 " --- Markdown preview --- "
 nmap <C-s> <Plug>MarkdownPreview
-
 
 
 " --- vim-go --- " 
@@ -201,9 +202,5 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-"vim-airline / theme settings
+" theme settings
 autocmd ColorScheme * highlight! link SignColumn LineNr
-let g:airline_theme='gruvbox_material'
-let g:airline_powerline_fonts=1
-set background=dark
-colorscheme gruvbox-material

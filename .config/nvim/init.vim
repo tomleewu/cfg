@@ -5,4 +5,6 @@ source ~/.vimrc
 
 lua << EOF
 require('leap').set_default_keymaps()
+
+vim.cmd('colorscheme paper')
 EOF
