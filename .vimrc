@@ -19,12 +19,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb' " enables use of :Gbrowse to open files in GitHub 
-Plug 'sainnhe/gruvbox-material'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-sleuth' " automated indention
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ggandor/leap.nvim'
-Plug 'rose-pine/neovim'
 Plug 'tomleewu/vim-paper'
 call plug#end()
 
