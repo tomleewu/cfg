@@ -88,7 +88,10 @@ zle-line-init() {
 # Fix weird directory colors from ls
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
-alias ls='exa'
+
+if type exa > /dev/null 2>&1; then
+  alias ls='exa'
+fi
 
 # Use pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
