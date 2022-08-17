@@ -84,11 +84,12 @@ nmap <leader>; :Buffers<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>/ :Rg<CR>
 nmap <leader>t :Tags<CR>
+nmap <leader>h :History<CR>
+
 
 "don't search filenames in ripgrep
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --no-ignore-vcs --line-number --no-heading --color=always --smart-case ".shellescape(<q-args>), 1, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
 
 
 " --- Markdown preview --- "
@@ -125,7 +126,6 @@ let g:go_auto_type_info = 0
 set updatetime=500 " show GoInfo after 500 ms
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
-" Disable while using coc-nvim and coc-go
 let g:go_gopls_enabled = 1
 let g:go_gopls_options = ['-remote=auto']
 let g:go_code_completion_enabled = 1
@@ -181,7 +181,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
-inoremap <expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<CR>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Open diagnostics window
 nnoremap <silent> <leader>cd :CocDiagnostics<cr>

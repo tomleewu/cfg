@@ -1,11 +1,11 @@
 {
 	"coc.preferences.enableMessageDialog": false,
 	"notification.maxWidth": 0,
+	"notification.disabledProgressSources": ["*"],
 	"notification.maxHeight": 0,
 	"go.goplsPath": "/Users/tomwu/go/bin/gopls",
 	"go.goplsOptions": {
 		"usePlaceholders": true
 	},
-	"diagnostic.autoRefresh": true,
-	"suggest.enablePreselect": true
+	"diagnostic.autoRefresh": true
 }

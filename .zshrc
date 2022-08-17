@@ -46,7 +46,7 @@ alias lg='lazygit'
 # fzf + rg configuration
 if _has fzf && _has rg; then
   export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore-vcs -g "!{node_modules,.git}" --files'
-  export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
+  export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --color=fg+:#000000,bg+:#D8D5C7,hl:#216609,hl+:#216609,gutter:-1"
   export FZF_CTRL_T_COMMAND='fd --type file --hidden --no-ignore'
   export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 fi
@@ -87,6 +87,8 @@ zle-line-init() {
 
 # Fix weird directory colors from ls
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+
+alias ls='exa'
 
 # Use pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
