@@ -25,7 +25,7 @@ Plug 'tpope/vim-sleuth' " automated indention
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ggandor/leap.nvim'
 Plug 'rose-pine/neovim'
-Plug 'https://gitlab.com/yorickpeterse/vim-paper.git'
+Plug 'tomleewu/vim-paper'
 call plug#end()
 
 
