@@ -26,34 +26,10 @@ Plug 'ggandor/leap.nvim'
 Plug 'tomleewu/vim-paper'
 call plug#end()
 
-
-" --- Vim defaults --- "
-set number
-set backspace=indent,eol,start
-set showcmd  " Display incomplete commands
-set scrolloff=5
-set clipboard=unnamedplus " Yank to system clipboard
-set directory^=$HOME/.vim/swapfiles// " Centralize swap files
-set tags=./tags,tags;$HOME
-set cursorline
-
-set ignorecase
-set incsearch
-set smartcase
-
-set noshowmode
-
-set undofile " Maintain undo history between sessions
-set undodir=~/.vim/undodir
-
-set autoread " Automatically read changed files
-
-tnoremap <C-t> <C-\><C-n> " Exit terminal mode using ctrl + t
-
-
 " --- Keyboard mappings --- "
 inoremap kj <Esc>
 nnoremap ; :
+vnoremap ; :
 
 " remap split movements
 nnoremap <C-h> <C-w>h
@@ -71,10 +47,9 @@ nnoremap - dd2kp
 " Switching buffers
 let mapleader = (' ')
 map <leader>d :BD<cr>
-set hidden "Allow for buffer switching without saves
 
 " Reload vimrc
-nnoremap <silent> <F5> :source ~/.vimrc<CR>
+nnoremap <leader><leader>r :source $MYVIMRC<CR>
 
 
 " --- fzf --- "
@@ -102,14 +77,15 @@ autocmd Filetype go nmap <Leader>r :GoRename<cr>
 autocmd Filetype go nmap <Leader>t :GoAddTags<cr>
 "debug
 nmap <leader>dt :GoDebugTestFunc<cr>
-nmap <leader>ds :GoDebugStop<cr>
-nmap <Leader>dn :GoDebugBreakpoint<cr>
-nmap <Leader>dr :GoDebugRestart<cr>
+nmap <leader>s :GoDebugStop<cr>
+nmap <Leader>b :GoDebugBreakpoint<cr>
+nmap <Leader>r :GoDebugRestart<cr>
 let g:go_debug_mappings = {
       \ '(go-debug-continue)': {'key': 'c', 'arguments': '<nowait>'},
       \ '(go-debug-next)': {'key': 'n', 'arguments': '<nowait>'},
       \ '(go-debug-stop)': {'key': 'q'},
       \ '(go-debug-step)': {'key': 's'},
+      \ '(go-debug-step-out)': {'key': 'o'},
       \ '(go-debug-print)': {'key': 'p'},
   \}
 let g:go_debug_windows = {
@@ -121,7 +97,6 @@ let g:go_test_timeout='60s'
 let g:go_fmt_command = "goimports"
 let g:go_doc_popup_window = 1
 let g:go_auto_type_info = 0
-set updatetime=500 " show GoInfo after 500 ms
 map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 let g:go_gopls_enabled = 1
@@ -146,16 +121,7 @@ let g:clever_f_mark_char_color = 'Visual'
 
 
 " --- coc-nvim --- "
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-set updatetime=300
 set shortmess+=c
-set signcolumn=yes
 
 " GoTo code navigation.
 " nmap <silent> gd <Plug>(coc-definition) Prefer to use vim-go go_def which
