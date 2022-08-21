@@ -17,8 +17,6 @@ return require('packer').startup(function(use)
   use 'Townk/vim-autoclose'
   -- disables search highlighting after cursor movement
   use 'romainl/vim-cool'
-  use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
-  use 'junegunn/fzf.vim'
   use {'fatih/vim-go', run = ':GoUpdateBinaries' }
   -- open files in github
   use { 'tpope/vim-rhubarb', requires = { { 'tpope/vim-fugitive' } }}

@@ -79,16 +79,6 @@ _G.packer_plugins = {
     path = "/Users/tomleewu/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
-  fzf = {
-    loaded = true,
-    path = "/Users/tomleewu/.local/share/nvim/site/pack/packer/start/fzf",
-    url = "https://github.com/junegunn/fzf"
-  },
-  ["fzf.vim"] = {
-    loaded = true,
-    path = "/Users/tomleewu/.local/share/nvim/site/pack/packer/start/fzf.vim",
-    url = "https://github.com/junegunn/fzf.vim"
-  },
   ["impatient.nvim"] = {
     loaded = true,
     path = "/Users/tomleewu/.local/share/nvim/site/pack/packer/start/impatient.nvim",
