@@ -19,9 +19,12 @@ function M.setup(servers, server_options)
     --   local opts = vim.tbl_deep_extend("force", server_options, servers["sumneko_lua"] or {})
     --   -- lspconfig.sumneko_lua.setup(require("lua-dev").setup { lspconfig = opts })
     -- end,
-    -- ["gopls"] = function()
-    --   local opts = vim.tbl_deep_extend("force", server_options, servers["gopls"] or {})
-    -- end,
+    ["gopls"] = function()
+      local opts = vim.tbl_deep_extend("force", server_options, servers["gopls"] or {})
+      require("go").setup()
+      lspconfig["gopls"].setup(opts)
+      vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
+    end,
   }
 
 end

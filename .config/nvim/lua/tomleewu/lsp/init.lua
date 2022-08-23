@@ -48,9 +48,6 @@ if not status_ok2 then
     return
 end
 
--- go.nvim; where should this go?
-require("go").setup()
-
 require("lsp_signature").setup({
     hint_enable = false,
 })
