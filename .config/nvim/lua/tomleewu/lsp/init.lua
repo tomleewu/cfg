@@ -1,0 +1,58 @@
+local M = {}
+
+local servers = {
+    gopls = {
+        settings = {}
+    },
+    sumneko_lua = {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    -- Get the language server to recognize the `vim` global
+                    globals = { "vim", },
+                },
+                telemetry = { enable = false },
+                hint = {
+                    enable = true,
+                },
+            },
+        },
+    },
+}
+
+function M.on_attach(client, bufnr)
+    require("tomleewu.lsp.keymaps").setup(bufnr)
+    require("tomleewu.lsp.highlight").setup(client, bufnr)
+end
+
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+    return
+end
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+
+require("tomleewu.lsp.handlers").setup()
+
+local opts = {
+    on_attach = M.on_attach,
+    capabilities = M.capabilities,
+}
+
+function M.setup()
+    require("tomleewu.lsp.installer").setup(servers, opts)
+end
+
+local status_ok2, _ = pcall(require, "lspconfig")
+if not status_ok2 then
+    return
+end
+
+-- go.nvim; where should this go?
+require("go").setup()
+
+require("lsp_signature").setup({
+    hint_enable = false,
+})
+
+return M

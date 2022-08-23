@@ -1,7 +1,8 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+    install_path })
   vim.cmd [[packadd packer.nvim]]
 end
 
@@ -12,37 +13,75 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use 'rhysd/clever-f.vim'
-  -- use 'sheerun/vim-polyglot'
   use 'tpope/vim-commentary'
   use 'Townk/vim-autoclose'
   -- disables search highlighting after cursor movement
   use 'romainl/vim-cool'
-  use {'fatih/vim-go', run = ':GoUpdateBinaries' }
   -- open files in github
-  use { 'tpope/vim-rhubarb', requires = { { 'tpope/vim-fugitive' } }}
+  use { 'tpope/vim-rhubarb', requires = { { 'tpope/vim-fugitive' } } }
   use 'alexghergh/nvim-tmux-navigation'
   -- automated indention, replace me
   use 'tpope/vim-sleuth'
-  use { 'neoclide/coc.nvim', branch = 'release' }
-  use { 'ggandor/leap.nvim', config = function() require'leap'.set_default_keymaps() end }
+  use { 'ggandor/leap.nvim', config = function() require 'leap'.set_default_keymaps() end }
   -- colorscheme
   use 'tomleewu/vim-paper'
-  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use {
     'kylechui/nvim-surround',
     tag = "*",
-    config = function() require'nvim-surround'.setup() end
+    config = function() require 'nvim-surround'.setup() end
   }
 
-  -- Is using a standard Neovim install, i.e. built from source or using a
-  -- provided appimage.
+  -- optimizes neovim startup time
   use 'lewis6991/impatient.nvim'
 
   -- requires ripgrep
   use {
     'nvim-telescope/telescope.nvim', branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } }
+    requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } }
   }
+
+  -- completion
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'saadparwaiz1/cmp_luasnip'
+
+  -- snippets
+  use 'L3MON4D3/LuaSnip'
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+
+  -- lsp
+  use 'williamboman/mason.nvim'
+  use 'williamboman/mason-lspconfig.nvim'
+  use 'neovim/nvim-lspconfig'
+  use "ray-x/lsp_signature.nvim"
+
+  -- highlight identifier under cursor
+  -- use { 'RRethy/vim-illuminate', config = function() require 'illuminate'.configure() end }
+
+  -- golang
+  use 'ray-x/go.nvim'
+  use 'ray-x/guihua.lua' -- recommanded if need floating window support
+
+  -- dap
+  use {
+    "mfussenegger/nvim-dap",
+    module = { "dap" },
+    requires = {
+      "theHamsta/nvim-dap-virtual-text",
+      "rcarriga/nvim-dap-ui",
+      "nvim-telescope/telescope-dap.nvim",
+      "leoluz/nvim-dap-go",
+      'theHamsta/nvim-dap-virtual-text',
+    },
+    config = function()
+      require("tomleewu.dap").setup()
+    end,
+  }
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
