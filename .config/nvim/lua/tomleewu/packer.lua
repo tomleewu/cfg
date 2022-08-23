@@ -14,6 +14,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use 'rhysd/clever-f.vim'
   use 'tpope/vim-commentary'
+  use 'tpope/vim-vinegar'
   use 'Townk/vim-autoclose'
   -- disables search highlighting after cursor movement
   use 'romainl/vim-cool'
