@@ -21,9 +21,23 @@ function M.setup(servers, server_options)
     -- end,
     ["gopls"] = function()
       local opts = vim.tbl_deep_extend("force", server_options, servers["gopls"] or {})
-      require("go").setup()
+      -- Don't focus loclist on lint
+      vim.cmd [[
+        augroup NvimGo
+          autocmd!
+          autocmd User NvimGoLintPopupPost wincmd p
+        augroup END
+      ]]
+
+      require("go").setup({
+        lint_prompt_style = 'vt',
+        test_popup_auto_leave = true,
+        test_popup_width = 150,
+        tags_options = {},
+        tags_transform = 'camelcase',
+      })
+
       lspconfig["gopls"].setup(opts)
-      vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua require('go.format').goimport() ]], false)
     end,
   }
 

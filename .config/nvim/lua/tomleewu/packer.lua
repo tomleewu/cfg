@@ -64,8 +64,7 @@ return require('packer').startup(function(use)
   -- use { 'RRethy/vim-illuminate', config = function() require 'illuminate'.configure() end }
 
   -- golang
-  use 'ray-x/go.nvim'
-  use 'ray-x/guihua.lua' -- recommanded if need floating window support
+  use 'crispgm/nvim-go'
 
   -- dap
   use {
