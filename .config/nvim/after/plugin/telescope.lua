@@ -2,17 +2,20 @@ local remap = require("tomleewu.keymap")
 local actions = require("telescope.actions")
 local nnoremap = remap.nnoremap
 
-nnoremap("<leader>f","<cmd> Telescope find_files<cr>")
-nnoremap("<leader>cf","<cmd> Telescope current_buffer_fuzzy_find<cr>")
-nnoremap("<leader>/","<cmd> Telescope live_grep<cr>")
-nnoremap("<leader>h","<cmd> Telescope oldfiles<cr>")
-nnoremap("<leader>;","<cmd> Telescope buffers<cr>")
+nnoremap("<leader>f", "<cmd> Telescope find_files<cr>")
+nnoremap("<leader>cf", "<cmd> Telescope current_buffer_fuzzy_find<cr>")
+nnoremap("<leader>/", "<cmd> Telescope live_grep<cr>")
+nnoremap("<leader>h", "<cmd> Telescope oldfiles<cr>")
+nnoremap("<leader>;", "<cmd> Telescope buffers<cr>")
+nnoremap("<leader>d", "<cmd> Telescope diagnostics<cr>")
 
-require('telescope').setup{
+require('telescope').setup {
 	defaults = {
 		mappings = {
 			i = {
-				["<esc>"] = actions.close
+				["<esc>"] = actions.close,
+				["<C-j>"] = actions.move_selection_next,
+				["<C-k>"] = actions.move_selection_previous,
 			},
 		},
 		pickers = {

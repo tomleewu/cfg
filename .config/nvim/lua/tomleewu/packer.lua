@@ -61,7 +61,7 @@ return require('packer').startup(function(use)
   use "ray-x/lsp_signature.nvim"
 
   -- highlight identifier under cursor
-  -- use { 'RRethy/vim-illuminate', config = function() require 'illuminate'.configure() end }
+  use 'RRethy/vim-illuminate'
 
   -- golang
   use 'crispgm/nvim-go'

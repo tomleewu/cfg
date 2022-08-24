@@ -2,7 +2,13 @@ local M = {}
 
 local servers = {
     gopls = {
-        settings = {}
+        settings = {
+            gopls = {
+                gofumpt = true,
+                staticcheck = true,
+                usePlaceholders = true
+            }
+        }
     },
     sumneko_lua = {
         settings = {
@@ -22,7 +28,6 @@ local servers = {
 
 function M.on_attach(client, bufnr)
     require("tomleewu.lsp.keymaps").setup(bufnr)
-    require("tomleewu.lsp.highlight").setup(client, bufnr)
 end
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")

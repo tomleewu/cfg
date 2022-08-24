@@ -21,7 +21,7 @@ function M.setup(servers, server_options)
     -- end,
     ["gopls"] = function()
       local opts = vim.tbl_deep_extend("force", server_options, servers["gopls"] or {})
-      -- Don't focus loclist on lint
+      -- nvim-go: Don't focus loclist on lint
       vim.cmd [[
         augroup NvimGo
           autocmd!
@@ -30,7 +30,7 @@ function M.setup(servers, server_options)
       ]]
 
       require("go").setup({
-        lint_prompt_style = 'vt',
+        auto_lint = false,
         test_popup_auto_leave = true,
         test_popup_width = 150,
         tags_options = {},
