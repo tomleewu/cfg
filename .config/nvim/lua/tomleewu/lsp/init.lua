@@ -1,6 +1,7 @@
 local M = {}
 
 local servers = {
+    sqlls = {},
     gopls = {
         settings = {
             gopls = {

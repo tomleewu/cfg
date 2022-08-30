@@ -15,7 +15,7 @@ return require('packer').startup(function(use)
   use 'rhysd/clever-f.vim'
   use 'tpope/vim-commentary'
   use 'tpope/vim-vinegar'
-  use 'Townk/vim-autoclose'
+  use 'jiangmiao/auto-pairs'
   -- disables search highlighting after cursor movement
   use 'romainl/vim-cool'
   -- open files in github
@@ -26,7 +26,10 @@ return require('packer').startup(function(use)
   use { 'ggandor/leap.nvim', config = function() require 'leap'.set_default_keymaps() end }
   -- colorscheme
   use 'tomleewu/vim-paper'
+
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'nvim-treesitter/nvim-treesitter-refactor'
+
   use {
     'kylechui/nvim-surround',
     tag = "*",
@@ -60,8 +63,6 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use "ray-x/lsp_signature.nvim"
 
-  -- highlight identifier under cursor
-  use 'RRethy/vim-illuminate'
 
   -- golang
   use 'crispgm/nvim-go'

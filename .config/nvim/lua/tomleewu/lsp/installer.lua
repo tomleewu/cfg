@@ -19,26 +19,10 @@ function M.setup(servers, server_options)
     --   local opts = vim.tbl_deep_extend("force", server_options, servers["sumneko_lua"] or {})
     --   -- lspconfig.sumneko_lua.setup(require("lua-dev").setup { lspconfig = opts })
     -- end,
-    ["gopls"] = function()
-      local opts = vim.tbl_deep_extend("force", server_options, servers["gopls"] or {})
-      -- nvim-go: Don't focus loclist on lint
-      vim.cmd [[
-        augroup NvimGo
-          autocmd!
-          autocmd User NvimGoLintPopupPost wincmd p
-        augroup END
-      ]]
-
-      require("go").setup({
-        auto_lint = false,
-        test_popup_auto_leave = true,
-        test_popup_width = 150,
-        tags_options = {},
-        tags_transform = 'camelcase',
-      })
-
-      lspconfig["gopls"].setup(opts)
-    end,
+    -- ["gopls"] = function()
+    --   local opts = vim.tbl_deep_extend("force", server_options, servers["gopls"] or {})
+    --   lspconfig["gopls"].setup(opts)
+    -- end,
   }
 
 end
