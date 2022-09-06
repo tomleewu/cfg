@@ -65,7 +65,17 @@ return require('packer').startup(function(use)
 
 
   -- golang
-  use 'crispgm/nvim-go'
+  use 'fatih/vim-go'
+
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    },
+    config = function() require('refactoring').setup({}) end
+}
+
 
   -- dap
   use {

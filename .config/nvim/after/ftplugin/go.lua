@@ -9,4 +9,7 @@ nmap("<C-c>", "<cmd>GoTestFunc<CR>")
 nmap("<C-v>", "<cmd>GoVet<CR>")
 nmap("<leader>i", "<cmd>GoFillStruct<CR>")
 nmap("<leader>t", "<cmd>GoAddTags<CR>")
-nmap("<leader><leader>l", "<cmd>GoFormat<CR>")
+
+-- Configuration
+vim.g.go_def_mapping_enabled = 0
+vim.g.go_gopls_gofumpt=1
