@@ -5,7 +5,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 -- General keymaps
-nmap("<C-c>", "<cmd>GoTestFunc<CR>")
+nmap("<C-c>", "<cmd>GoTestFunc!<CR>")
 nmap("<C-v>", "<cmd>GoVet<CR>")
 nmap("<leader>i", "<cmd>GoFillStruct<CR>")
 nmap("<leader>t", "<cmd>GoAddTags<CR>")
@@ -17,3 +17,4 @@ vim.g.go_term_enabled = 1
 vim.g.go_term_reuse = 1
 vim.g.go_term_close_on_exit = 1
 vim.g.go_test_timeout = '30s'
+vim.g.go_list_height = 15
