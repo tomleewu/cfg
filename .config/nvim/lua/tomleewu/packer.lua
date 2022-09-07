@@ -15,7 +15,10 @@ return require('packer').startup(function(use)
   use 'rhysd/clever-f.vim'
   use 'tpope/vim-commentary'
   use 'tpope/vim-vinegar'
-  use 'jiangmiao/auto-pairs'
+  use {
+    "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+  }
   -- disables search highlighting after cursor movement
   use 'romainl/vim-cool'
   -- open files in github
