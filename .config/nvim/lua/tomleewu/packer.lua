@@ -39,6 +39,9 @@ return require('packer').startup(function(use)
     config = function() require 'nvim-surround'.setup() end
   }
 
+  -- Lazygit in neovim
+  use 'kdheepak/lazygit.nvim'
+
   -- optimizes neovim startup time
   use 'lewis6991/impatient.nvim'
 
@@ -77,8 +80,7 @@ return require('packer').startup(function(use)
         {"nvim-treesitter/nvim-treesitter"}
     },
     config = function() require('refactoring').setup({}) end
-}
-
+  }
 
   -- dap
   use {

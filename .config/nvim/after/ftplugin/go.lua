@@ -12,4 +12,8 @@ nmap("<leader>t", "<cmd>GoAddTags<CR>")
 
 -- Configuration
 vim.g.go_def_mapping_enabled = 0
-vim.g.go_gopls_gofumpt=1
+vim.g.go_gopls_gofumpt = 1
+vim.g.go_term_enabled = 1
+vim.g.go_term_reuse = 1
+vim.g.go_term_close_on_exit = 1
+vim.g.go_test_timeout = '30s'
