@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-vinegar'
   use {
     "windwp/nvim-autopairs",
-      config = function() require("nvim-autopairs").setup {} end
+    config = function() require("nvim-autopairs").setup {} end
   }
   -- disables search highlighting after cursor movement
   use 'romainl/vim-cool'
@@ -51,6 +51,14 @@ return require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } }
   }
 
+  -- codeactions
+  use {
+    'kosayoda/nvim-lightbulb',
+    requires = 'antoinemadec/FixCursorHold.nvim',
+    config = function() require('nvim-lightbulb').setup({ autocmd = { enabled = true } }) end,
+  }
+  use { 'nvim-telescope/telescope-ui-select.nvim' }
+
   -- completion
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
@@ -76,8 +84,8 @@ return require('packer').startup(function(use)
   use {
     "ThePrimeagen/refactoring.nvim",
     requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-treesitter/nvim-treesitter"}
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" }
     },
     config = function() require('refactoring').setup({}) end
   }
