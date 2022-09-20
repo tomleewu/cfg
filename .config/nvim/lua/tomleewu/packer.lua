@@ -10,6 +10,7 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  use 'vim-scripts/ReplaceWithRegister'
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   use 'rhysd/clever-f.vim'
@@ -29,6 +30,11 @@ return require('packer').startup(function(use)
   use { 'ggandor/leap.nvim', config = function() require 'leap'.set_default_keymaps() end }
   -- colorscheme
   use 'tomleewu/vim-paper'
+  -- split / join multiline
+  use 'AndrewRadev/splitjoin.vim'
+  -- allow for camelCase deletion
+  use { 'Julian/vim-textobj-variable-segment', requires = { { 'kana/vim-textobj-user' } } }
+
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-refactor'

@@ -15,7 +15,8 @@ ZSH_THEME="common"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z tmux kubectl zsh-autosuggestions vi-mode fzf docker)
+plugins=(git tmux kubectl zsh-autosuggestions vi-mode fzf docker)
+
 
 # Configure tmux plugin
 export ZSH_TMUX_AUTOSTART=true
@@ -29,6 +30,10 @@ source $ZSH/oh-my-zsh.sh
 _has() {
   return $( whence $1 >/dev/null )
 }
+
+if _has zoxide; then
+  eval "$(zoxide init zsh)"
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -89,7 +94,7 @@ zle-line-init() {
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
 
-if type exa > /dev/null 2>&1; then
+if _has exa; then
   alias ls='exa'
 fi
 
