@@ -2,6 +2,8 @@ HOME = os.getenv("HOME")
 
 -- line numbers
 vim.opt.number = true
+vim.opt.relativenumber = true
+
 -- incomplete commands
 vim.opt.showcmd = true
 
@@ -15,6 +17,7 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.undodir = HOME .. "/.vim/undodir"
 vim.opt.directory = HOME .. "/.vim/swapfiles"
 vim.opt.hidden = true
+
 
 -- for coc.nvim
 vim.opt.backup = false

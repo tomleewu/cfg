@@ -20,4 +20,4 @@ nnoremap("<leader><leader>r", "<cmd>source $MYVIMRC<CR>")
 nnoremap("<leader><leader>c", "<cmd>ccl<CR>")
 
 -- Open init.vim
-nnoremap("cv","<cmd>edit $MYVIMRC<CR>")
+nnoremap("cv", "<cmd>edit $MYVIMRC<CR>")
