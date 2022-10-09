@@ -33,18 +33,6 @@ return require('packer').startup(function(use)
   -- split / join multiline
   use 'AndrewRadev/splitjoin.vim'
 
-
-  -- popup cmdline
-  use({
-    "folke/noice.nvim",
-    event = "VimEnter",
-    requires = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    }
-  })
-
   -- focus splits
   use {
     'nyngwang/NeoZoom.lua',
