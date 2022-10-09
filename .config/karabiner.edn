@@ -2,8 +2,8 @@
 	{:Default 
 		{:default true
 			:sim     50
-			:delay   500
-			:alone   1000
+			:delay   100
+			:alone   500
 			:held    500
 			}
 		}
