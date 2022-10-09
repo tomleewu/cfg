@@ -32,8 +32,26 @@ return require('packer').startup(function(use)
   use 'tomleewu/vim-paper'
   -- split / join multiline
   use 'AndrewRadev/splitjoin.vim'
-  -- allow for camelCase deletion
-  use { 'Julian/vim-textobj-variable-segment', requires = { { 'kana/vim-textobj-user' } } }
+
+
+  -- popup cmdline
+  use({
+    "folke/noice.nvim",
+    event = "VimEnter",
+    requires = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
+  })
+
+  -- focus splits
+  use {
+    'nyngwang/NeoZoom.lua',
+    requires = {
+      'nyngwang/NeoNoName.lua' -- you will need this if you want to use the keymap sample below.
+    },
+  }
 
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -87,15 +105,6 @@ return require('packer').startup(function(use)
 
   -- golang
   use 'fatih/vim-go'
-
-  use {
-    "ThePrimeagen/refactoring.nvim",
-    requires = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" }
-    },
-    config = function() require('refactoring').setup({}) end
-  }
 
   -- dap
   use {
