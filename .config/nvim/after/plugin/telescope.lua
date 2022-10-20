@@ -5,7 +5,7 @@ local telescopeConfig = require("telescope.config")
 
 nnoremap("<leader>f", "<cmd> Telescope find_files<cr>")
 nnoremap("<leader>cf", "<cmd> Telescope current_buffer_fuzzy_find<cr>")
-nnoremap("<leader>/", "<cmd> Telescope live_grep<cr>")
+nnoremap("<leader>/", "<cmd> Telescope grep_string only_sort_text=true search=<cr>")
 nnoremap("<leader>h", "<cmd> Telescope oldfiles<cr>")
 nnoremap("<leader>;", "<cmd> Telescope buffers<cr>")
 nnoremap("<leader>d", "<cmd> Telescope diagnostics<cr>")
@@ -39,19 +39,19 @@ require('telescope').setup {
 			},
 		},
 	},
-		pickers = {
-			live_grep = {
-				only_sort_text = true,
-			},
-			find_files = {
-				find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
-			},
-			diagnostics = {
-				root_dir = true,
-				severity_limit = "WARN",
-				no_unlisted = false,
-			},
+	pickers = {
+		live_grep = {
+			only_sort_text = true,
 		},
+		find_files = {
+			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
+		},
+		diagnostics = {
+			root_dir = true,
+			severity_limit = "WARN",
+			no_unlisted = false,
+		},
+	},
 }
 
 require('telescope').load_extension('fzf')
