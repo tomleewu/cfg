@@ -10,7 +10,6 @@ nnoremap(";", ":")
 vnoremap(";", ":")
 
 -- netrw
-nnoremap("<leader>e", "<cmd>E<CR>")
 nnoremap("<C-g>", "<C-6>")
 
 -- Reload vimrc

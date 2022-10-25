@@ -52,6 +52,9 @@ return require('packer').startup(function(use)
     config = function() require 'nvim-surround'.setup() end
   }
 
+  -- file actions using vim
+  use "elihunter173/dirbuf.nvim"
+
   -- Lazygit in neovim
   use 'kdheepak/lazygit.nvim'
 
