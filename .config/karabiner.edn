@@ -7,6 +7,20 @@
 			:held    500
 			}
 		}
+	:devices {
+			  :kbd67 [{:vendor_id 19266 :product_id 4646}]
+			  :applekeyboard [{:vendor_id 1452 :product_id 632}]
+			  :splitkb [{:vendor_id 64562 :product_id 647}]
+			  :allkbs [
+				{:vendor_id 19266 :product_id 4646}
+				{:vendor_id 1452 :product_id 632}
+				{:vendor_id 64562 :product_id 647}
+			  ]
+			  :allkbsexceptsplit [
+				{:vendor_id 19266 :product_id 4646}
+				{:vendor_id 1452 :product_id 632}
+			  ]
+	}
 	:layers {
 		:right-alt {:key :right_alt}
 					}
@@ -38,7 +52,7 @@
 		{:des   "caps_lock to esc when pressed alone, to ctrl as modifier"
 		 :rules [[:##caps_lock :left_control nil {:alone :escape}]]},
 		{:des   "shift to z when pressed alone, to shift as modifier"
-		 :rules [[:##left_shift :left_shift nil {:alone :z}]]},
+		 :rules [:allkbsexceptsplit [:##left_shift :left_shift nil {:alone :z}]]},
 		{:des "extended layer with right option",
 		     :rules [
 					:right-alt
