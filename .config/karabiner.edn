@@ -47,10 +47,21 @@
 					[:!Ssemicolon :!Sslash],
 					[:r :quote],
 					[:!Rr :!Rquote],
+					[:n :slash],
+					[:!Sn :!Sslash],
+					[:quote :hyphen],
+					[:!Squote :!Shyphen]
 				]
 			},
 		{:des   "caps_lock to esc when pressed alone, to ctrl as modifier"
 		 :rules [[:##caps_lock :left_control nil {:alone :escape}]]},
+		{:des   "swap cmd and option"
+		 :rules [
+				[:##right_option :right_command],
+				[:##right_command :right_option],
+				[:##left_option :left_command],
+				[:##left_command :left_option]
+	   ]},
 		{:des   "shift to z when pressed alone, to shift as modifier"
 		 :rules [:allkbsexceptsplit [:##left_shift :left_shift nil {:alone :z}]]},
 		{:des "extended layer with right option",
@@ -69,8 +80,6 @@
 			    [:!Tk :!Edown_arrow]
 			    [:!Ti :!Eup_arrow]
 			    [:!Tl :!Eright_arrow]
-					[:c :!Cc]
-					[:v :!Cv]
 		      ]},
 		{:des "extended layer with left control",
 		     :rules [
