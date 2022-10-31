@@ -56,7 +56,7 @@
 		{:des   "caps_lock to esc when pressed alone, to ctrl as modifier"
 		 :rules [[:##caps_lock :left_control nil {:alone :escape}]]},
 		{:des   "swap cmd and option"
-		 :rules [
+		 :rules [:splitkb
 				[:##right_option :right_command],
 				[:##right_command :right_option],
 				[:##left_option :left_command],

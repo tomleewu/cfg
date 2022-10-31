@@ -1,5 +1,5 @@
 # closes focused window
-alt - w : yabai -m window --close
+# alt - w : yabai -m window --close
 
 # focus window
 alt - h : yabai -m window --focus west
@@ -53,16 +53,12 @@ alt - e : yabai -m window --toggle split
 alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
-# toggle sticky
-alt - s : yabai -m window --toggle sticky
-
 # toggle sticky, float and resize to picture-in-picture size
 alt - p : yabai -m window --toggle sticky;\
           yabai -m window --grid 5:5:4:0:1:1
 
 # change layout of desktop
 ctrl + alt - a : yabai -m space --layout bsp
-# ctrl + alt - d : yabai -m space --layout float
 
 # Send window to desktop
 shift + alt - 1 : yabai -m window --space 1
