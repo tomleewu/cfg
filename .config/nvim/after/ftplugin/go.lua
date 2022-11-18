@@ -18,6 +18,7 @@ vim.g.go_term_close_on_exit = 1
 vim.g.go_test_timeout = '60s'
 vim.g.go_list_height = 15
 vim.g.go_fmt_autosave = 0
+vim.g.go_addtags_transform = 'camelcase'
 
 function go_org_imports(wait_ms)
   local params = vim.lsp.util.make_range_params()

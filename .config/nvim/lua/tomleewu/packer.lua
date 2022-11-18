@@ -41,6 +41,11 @@ return require('packer').startup(function(use)
     },
   }
 
+  -- better quickfix
+  use { 'kevinhwang91/nvim-bqf', ft = 'qf' }
+
+  -- snakeCase and under_score word objects
+  use { 'chaoren/vim-wordmotion' }
 
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-refactor'
