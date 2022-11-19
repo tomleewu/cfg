@@ -19,6 +19,7 @@
 			  :allkbsexceptsplit [
 				{:vendor_id 19266 :product_id 4646}
 				{:vendor_id 1452 :product_id 632}
+				{:vendor_id 1452 :product_id 833}
 			  ]
 	}
 	:layers {
