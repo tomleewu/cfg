@@ -15,11 +15,7 @@ return require('packer').startup(function(use)
   use 'nvim-lualine/lualine.nvim'
   use 'rhysd/clever-f.vim'
   use 'tpope/vim-commentary'
-  use 'tpope/vim-vinegar'
-  use {
-    "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
-  }
+  use { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end }
   -- disables search highlighting after cursor movement
   use 'romainl/vim-cool'
   -- open files in github
@@ -32,6 +28,9 @@ return require('packer').startup(function(use)
   use 'tomleewu/vim-paper'
   -- split / join multiline
   use 'AndrewRadev/splitjoin.vim'
+
+  -- auto cd to project root
+  use { "ahmedkhalf/project.nvim", config = function() require("project_nvim").setup {} end }
 
   -- focus splits
   use {

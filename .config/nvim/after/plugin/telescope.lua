@@ -9,6 +9,7 @@ nnoremap("<leader>/", "<cmd> Telescope grep_string only_sort_text=true search=<c
 nnoremap("<leader>h", "<cmd> Telescope oldfiles<cr>")
 nnoremap("<leader>;", "<cmd> Telescope buffers<cr>")
 nnoremap("<leader>d", "<cmd> Telescope diagnostics<cr>")
+nnoremap("<leader>p", "<cmd> Telescope projects<cr>")
 
 -- Clone the default Telescope configuration
 local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -40,9 +41,6 @@ require('telescope').setup {
 		},
 	},
 	pickers = {
-		live_grep = {
-			only_sort_text = true,
-		},
 		find_files = {
 			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
 		},
@@ -55,3 +53,4 @@ require('telescope').setup {
 }
 
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('projects')
