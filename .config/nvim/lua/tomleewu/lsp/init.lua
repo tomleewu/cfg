@@ -2,6 +2,19 @@ local M = {}
 
 local servers = {
     sqlls = {},
+    texlab = {
+        settings = {
+            texlab = {
+                forwardSearch = {
+                    executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
+                    args = { "%l", "%p", "%f" }
+                },
+                build = {
+                    onSave = true,
+                }
+            }
+        }
+    },
     gopls = {
         settings = {
             gopls = {
@@ -35,7 +48,8 @@ local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
     return
 end
-M.capabilities = cmp_nvim_lsp.default_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 require("tomleewu.lsp.handlers").setup()
 
