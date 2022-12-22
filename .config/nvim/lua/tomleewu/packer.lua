@@ -30,7 +30,7 @@ return require('packer').startup(function(use)
   use 'AndrewRadev/splitjoin.vim'
 
   -- auto cd to project root
-  use { "ahmedkhalf/project.nvim", config = function() require("project_nvim").setup {} end }
+  use { "ahmedkhalf/project.nvim" }
 
   -- focus splits
   use {
