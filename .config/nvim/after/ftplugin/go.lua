@@ -14,7 +14,7 @@ nmap("<leader>t", "<cmd>GoAddTags<CR>")
 vim.g.go_def_mapping_enabled = 0
 vim.g.go_term_enabled = 1
 vim.g.go_term_reuse = 1
-vim.g.go_term_close_on_exit = 1
+vim.g.go_term_close_on_exit = 0
 vim.g.go_test_timeout = '60s'
 vim.g.go_list_height = 15
 vim.g.go_fmt_autosave = 0
