@@ -37,7 +37,7 @@ require('lazy').setup({
   'AndrewRadev/splitjoin.vim',
 
   -- auto cd to project root
-  { "ahmedkhalf/project.nvim", config = function() require("project_nvim").setup {} end },
+  { "ahmedkhalf/project.nvim" },
 
   -- focus splits
   {
