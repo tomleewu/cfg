@@ -22,18 +22,13 @@ return {
         end
     },
     -- split / join multiline
-    'AndrewRadev/splitjoin.vim',
+    { 'AndrewRadev/splitjoin.vim',
+        lazy = true
+    },
 
     -- auto cd to project root
     { "ahmedkhalf/project.nvim" },
 
-    -- focus splits
-    {
-        'nyngwang/NeoZoom.lua',
-        dependencies = {
-            'nyngwang/NeoNoName.lua' -- you will need this if you want to use the keymap sample below.
-        },
-    },
 
     -- opens up last session based on cwd
     {
@@ -50,15 +45,8 @@ return {
     { 'kevinhwang91/nvim-bqf', ft = 'qf' },
 
     -- snakeCase and under_score word objects
-    { 'chaoren/vim-wordmotion' },
-
-    { 'nvim-treesitter/nvim-treesitter',
-        build = ':TSUpdate',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-refactor',
-            'nvim-treesitter/nvim-treesitter-context',
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        }
+    { 'chaoren/vim-wordmotion',
+        event = "VeryLazy"
     },
 
     {
@@ -74,7 +62,9 @@ return {
     },
 
     -- Lazygit in neovim
-    'kdheepak/lazygit.nvim',
+    { 'kdheepak/lazygit.nvim',
+        lazy = true
+    },
 
     -- optimizes neovim startup time
     'lewis6991/impatient.nvim',
@@ -84,6 +74,7 @@ return {
         'kosayoda/nvim-lightbulb',
         dependencies = 'antoinemadec/FixCursorHold.nvim',
         config = function() require('nvim-lightbulb').setup({ autocmd = { enabled = true } }) end,
+        lazy = true
     },
 
     'nvim-telescope/telescope-ui-select.nvim',
@@ -92,28 +83,14 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-    'ray-x/lsp_signature.nvim',
+
+    { 'ray-x/lsp_signature.nvim',
+        lazy = true
+    },
 
 
     -- golang
     { 'fatih/vim-go',
         ft = "go"
-    },
-
-    -- dap
-    {
-        "mfussenegger/nvim-dap",
-        event = "VeryLazy",
-        module = { "dap" },
-        dependencies = {
-            "theHamsta/nvim-dap-virtual-text",
-            "rcarriga/nvim-dap-ui",
-            "nvim-telescope/telescope-dap.nvim",
-            "leoluz/nvim-dap-go",
-            'theHamsta/nvim-dap-virtual-text',
-        },
-        config = function()
-            require("tomleewu.dap").setup()
-        end,
     },
 }
