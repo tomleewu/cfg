@@ -63,7 +63,8 @@ return {
 
     -- Lazygit in neovim
     { 'kdheepak/lazygit.nvim',
-        lazy = true
+        keys = { "<leader>g" },
+        cmd = { "LazyGit" }
     },
 
     -- optimizes neovim startup time
@@ -87,7 +88,6 @@ return {
     { 'ray-x/lsp_signature.nvim',
         lazy = true
     },
-
 
     -- golang
     { 'fatih/vim-go',
