@@ -23,7 +23,7 @@ return {
     },
     -- split / join multiline
     { 'AndrewRadev/splitjoin.vim',
-        lazy = true
+        event = "VeryLazy"
     },
 
     -- auto cd to project root
@@ -63,7 +63,6 @@ return {
 
     -- Lazygit in neovim
     { 'kdheepak/lazygit.nvim',
-        keys = { "<leader>g" },
         cmd = { "LazyGit" }
     },
 
@@ -75,7 +74,7 @@ return {
         'kosayoda/nvim-lightbulb',
         dependencies = 'antoinemadec/FixCursorHold.nvim',
         config = function() require('nvim-lightbulb').setup({ autocmd = { enabled = true } }) end,
-        lazy = true
+        event = "VeryLazy"
     },
 
     'nvim-telescope/telescope-ui-select.nvim',
@@ -86,7 +85,7 @@ return {
     'neovim/nvim-lspconfig',
 
     { 'ray-x/lsp_signature.nvim',
-        lazy = true
+        event = "VeryLazy"
     },
 
     -- golang
