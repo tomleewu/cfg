@@ -1,7 +1,6 @@
 return {
     'vim-scripts/ReplaceWithRegister',
     'kyazdani42/nvim-web-devicons',
-    'rhysd/clever-f.vim',
     'tpope/vim-commentary',
     { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
     -- disables search highlighting after cursor movement
@@ -11,7 +10,16 @@ return {
     'alexghergh/nvim-tmux-navigation',
     -- automated indention, replace me
     'tpope/vim-sleuth',
-    { 'ggandor/leap.nvim', config = function() require 'leap'.set_default_keymaps() end },
+    {
+        'ggandor/leap.nvim',
+        dependencies = {
+            { 'ggandor/flit.nvim', opts = { labeled_modes = "nv", multiline = false } }
+        },
+        config = function()
+            require 'leap'.set_default_keymaps()
+        end,
+        event = "VeryLazy"
+    },
     -- colorscheme
     {
         'tomleewu/vim-paper',
