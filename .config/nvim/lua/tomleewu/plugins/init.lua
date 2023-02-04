@@ -1,7 +1,6 @@
 return {
     'vim-scripts/ReplaceWithRegister',
     'kyazdani42/nvim-web-devicons',
-    'tpope/vim-commentary',
     { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
     -- disables search highlighting after cursor movement
     'romainl/vim-cool',
@@ -20,6 +19,7 @@ return {
         end,
         event = "VeryLazy"
     },
+
     -- colorscheme
     {
         'tomleewu/vim-paper',
@@ -29,6 +29,7 @@ return {
             vim.cmd([[colorscheme paper]])
         end
     },
+
     -- split / join multiline
     { 'AndrewRadev/splitjoin.vim',
         event = "VeryLazy"
@@ -37,6 +38,8 @@ return {
     -- auto cd to project root
     { "ahmedkhalf/project.nvim" },
 
+    -- comments
+    'tpope/vim-commentary',
 
     -- opens up last session based on cwd
     {
@@ -80,7 +83,6 @@ return {
     -- codeactions
     {
         'kosayoda/nvim-lightbulb',
-        dependencies = 'antoinemadec/FixCursorHold.nvim',
         config = function() require('nvim-lightbulb').setup({ autocmd = { enabled = true } }) end,
         event = "VeryLazy"
     },
