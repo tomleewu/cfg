@@ -90,5 +90,4 @@ return { 'nvim-treesitter/nvim-treesitter',
         'nvim-treesitter/nvim-treesitter-textobjects',
     },
     config = configure
-
 }

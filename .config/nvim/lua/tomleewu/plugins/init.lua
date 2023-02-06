@@ -5,7 +5,11 @@ return {
     -- disables search highlighting after cursor movement
     'romainl/vim-cool',
     -- open files in github
-    { 'tpope/vim-rhubarb', dependencies = { { 'tpope/vim-fugitive' } } },
+    {
+        'tpope/vim-rhubarb',
+        dependencies = { { 'tpope/vim-fugitive' } },
+        event = "VeryLazy"
+    },
     'alexghergh/nvim-tmux-navigation',
     -- automated indention, replace me
     'tpope/vim-sleuth',

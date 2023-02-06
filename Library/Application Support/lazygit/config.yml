@@ -1,5 +1,6 @@
 gui:
   theme:
-    lightTheme: true # For terminals with a light background
     selectedLineBgColor:
       - white
+    defaultFgColor:
+      - black
