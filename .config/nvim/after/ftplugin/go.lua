@@ -8,7 +8,7 @@ vim.opt_local.shiftwidth = 4
 nmap("<C-c>", "<cmd>GoTestFunc!<CR>")
 nmap("<C-v>", "<cmd>GoVet<CR>")
 nmap("<leader>i", "<cmd>GoFillStruct<CR>")
-nmap("<leader>t", "<cmd>GoAddTags<CR>")
+nmap("<leader>jt", "<cmd>GoAddTags<CR>")
 
 -- Configuration
 vim.g.go_def_mapping_enabled = 0

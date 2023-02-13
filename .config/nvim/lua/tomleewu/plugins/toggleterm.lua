@@ -12,8 +12,7 @@ end
 
 local function configure()
     vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
-    nnoremap("<leader>nt", "<cmd>ToggleTerm direction=float<cr>")
-    nnoremap("<leader>vt", "<cmd>ToggleTerm direction=vertical size=120<cr>")
+    nnoremap("<leader>vt", "<cmd>1ToggleTerm direction=vertical size=120<cr>")
     require 'toggleterm'.setup {
         shade_terminals = false
     }

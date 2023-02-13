@@ -1,6 +1,5 @@
 return {
     'vim-scripts/ReplaceWithRegister',
-    'kyazdani42/nvim-web-devicons',
     { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
     -- disables search highlighting after cursor movement
     'romainl/vim-cool',
@@ -19,7 +18,7 @@ return {
             { 'ggandor/flit.nvim', opts = { labeled_modes = "nv", multiline = false } }
         },
         config = function()
-            require 'leap'.set_default_keymaps()
+            require 'leap'.add_default_mappings()
         end,
         event = "VeryLazy"
     },
@@ -70,11 +69,7 @@ return {
         config = true
     },
 
-    -- file actions using vim
-    {
-        'elihunter173/dirbuf.nvim',
-        event = "VeryLazy"
-    },
+
 
     -- Lazygit in neovim
     { 'kdheepak/lazygit.nvim',
