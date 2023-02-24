@@ -77,9 +77,6 @@ return {
         cmd = { "LazyGit" }
     },
 
-    -- optimizes neovim startup time
-    'lewis6991/impatient.nvim',
-
     -- codeactions
     {
         'kosayoda/nvim-lightbulb',
