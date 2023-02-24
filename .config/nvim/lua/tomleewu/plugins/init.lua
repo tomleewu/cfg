@@ -1,6 +1,6 @@
 return {
     'vim-scripts/ReplaceWithRegister',
-    { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
+    { "windwp/nvim-autopairs",  config = function() require("nvim-autopairs").setup {} end },
     -- disables search highlighting after cursor movement
     'romainl/vim-cool',
     -- open files in github
@@ -10,7 +10,7 @@ return {
         event = "VeryLazy"
     },
     'alexghergh/nvim-tmux-navigation',
-    -- automated indention, replace me
+    -- automated indention
     'tpope/vim-sleuth',
     {
         'ggandor/leap.nvim',
@@ -22,7 +22,6 @@ return {
         end,
         event = "VeryLazy"
     },
-
     -- colorscheme
     {
         'tomleewu/vim-paper',
@@ -33,17 +32,10 @@ return {
         end
     },
 
-    -- split / join multiline
-    { 'AndrewRadev/splitjoin.vim',
-        event = "VeryLazy"
-    },
-
     -- auto cd to project root
     { "ahmedkhalf/project.nvim" },
-
     -- comments
     'tpope/vim-commentary',
-
     -- opens up last session based on cwd
     {
         'rmagatti/auto-session',
@@ -54,23 +46,17 @@ return {
             }
         end
     },
-
     -- better quickfix
     { 'kevinhwang91/nvim-bqf', ft = 'qf' },
-
     -- snakeCase and under_score word objects
     { 'chaoren/vim-wordmotion',
         event = "VeryLazy"
     },
-
     {
         'kylechui/nvim-surround',
         version = "*",
         config = true
     },
-
-
-
     -- Lazygit in neovim
     { 'kdheepak/lazygit.nvim',
         cmd = { "LazyGit" }
@@ -82,18 +68,14 @@ return {
         config = function() require('nvim-lightbulb').setup({ autocmd = { enabled = true } }) end,
         event = "VeryLazy"
     },
-
     'nvim-telescope/telescope-ui-select.nvim',
-
     -- lsp
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-
     { 'ray-x/lsp_signature.nvim',
         event = "VeryLazy"
     },
-
     -- golang
     { 'fatih/vim-go',
         ft = "go"

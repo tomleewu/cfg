@@ -1,10 +1,15 @@
 local function configure()
     local neozoom = require('neo-zoom')
     neozoom.setup {
-        -- left_ratio = 0.2,
-        -- top_ratio = 0.03,
-        -- width_ratio = 0.67,
-        -- height_ratio = 0.9,
+        winopts = {
+            offset = {
+                -- NOTE: you can omit `top` and/or `left` to center the floating window.
+                -- top = 0,
+                left = 0.30,
+                width = 175,
+                height = .85,
+            },
+        },
         -- border = 'double',
         -- exclude_filetype = {
         --     'fzf', 'qf', 'dashboard'
