@@ -1,4 +1,6 @@
 return {
+
+    'nvim-tree/nvim-web-devicons',
     'vim-scripts/ReplaceWithRegister',
     { "windwp/nvim-autopairs",  config = function() require("nvim-autopairs").setup {} end },
     -- disables search highlighting after cursor movement

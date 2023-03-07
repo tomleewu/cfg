@@ -79,6 +79,12 @@ local function configure()
                 -- and should return true of false
                 include_surrounding_whitespace = true,
             },
+            swap = {
+                enable = true,
+                swap_next = {
+                    ["<leader>S"] = "@parameter.inner",
+                },
+            },
         },
     }
 end

@@ -21,7 +21,9 @@ local function configure()
     table.insert(vimgrep_arguments, "--glob")
     table.insert(vimgrep_arguments, "!.git/*")
 
-    require('telescope').setup {
+    local telescope = require('telescope')
+
+    telescope.setup {
         defaults = {
             mappings = {
                 i = {
@@ -74,14 +76,15 @@ local function configure()
         }
     }
 
-    require('telescope').load_extension('fzf')
-    require('telescope').load_extension('projects')
-    require("telescope").load_extension("ui-select")
+    telescope.load_extension('fzf')
+    telescope.load_extension('projects')
+    telescope.load_extension("ui-select")
 end
 
 -- requires ripgrep
 return {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
     dependencies = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
     event = 'VeryLazy',
     keys = {
