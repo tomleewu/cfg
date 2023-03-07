@@ -80,4 +80,7 @@ return {
     { 'fatih/vim-go',
         ft = "go"
     },
+
+
+    "lukas-reineke/lsp-format.nvim",
 }

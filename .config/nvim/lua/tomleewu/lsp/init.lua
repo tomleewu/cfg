@@ -2,6 +2,7 @@ local M = {}
 
 local servers = {
     sqlls = {},
+    rust_analyzer = {},
     texlab = {
         settings = {
             texlab = {
@@ -42,6 +43,7 @@ local servers = {
 
 function M.on_attach(client, bufnr)
     require("tomleewu.lsp.keymaps").setup(bufnr)
+    require("lsp-format").on_attach(client)
 end
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
