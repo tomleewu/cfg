@@ -9,8 +9,6 @@ local function configure()
         -- node will not be formatted
         max_join_length = 140,
     })
-    nnoremap("gS", "<cmd>TSJSplit<cr>")
-    nnoremap("gJ", "<cmd>TSJJoin<cr>")
 end
 return
 -- split / join multiline
@@ -18,4 +16,8 @@ return
     'Wansmer/treesj',
     dependencies = { 'nvim-treesitter' },
     config = configure,
+    keys = {
+        { "gS", "<cmd>TSJSplit<cr>", desc = "Split" },
+        { "gJ", "<cmd>TSJJoin<cr>",  desc = "Join" },
+    },
 }

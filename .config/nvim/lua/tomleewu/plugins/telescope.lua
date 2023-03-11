@@ -1,16 +1,7 @@
 local function configure()
-    local remap = require("tomleewu.keymap")
+    local telescope = require('telescope')
     local actions = require("telescope.actions")
-    local nnoremap = remap.nnoremap
     local telescopeConfig = require("telescope.config")
-
-    nnoremap("<leader>f", "<cmd> Telescope find_files<cr>")
-    nnoremap("<leader>cf", "<cmd> Telescope current_buffer_fuzzy_find<cr>")
-    nnoremap("<leader>/", "<cmd> Telescope grep_string only_sort_text=true search=<cr>")
-    nnoremap("<leader>h", "<cmd> Telescope oldfiles<cr>")
-    nnoremap("<leader>;", "<cmd> Telescope buffers<cr>")
-    nnoremap("<leader>d", "<cmd> Telescope diagnostics<cr>")
-    nnoremap("<leader>p", "<cmd> Telescope projects<cr>")
 
     -- Clone the default Telescope configuration
     local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
@@ -21,7 +12,6 @@ local function configure()
     table.insert(vimgrep_arguments, "--glob")
     table.insert(vimgrep_arguments, "!.git/*")
 
-    local telescope = require('telescope')
 
     telescope.setup {
         defaults = {
@@ -86,10 +76,13 @@ return {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
-    event = 'VeryLazy',
     keys = {
-        "<leader>f",
-        "<leader>/"
+        { "<leader>f", "<cmd> Telescope find_files<cr>",                              desc = "find files" },
+        { "<leader>/", "<cmd> Telescope grep_string only_sort_text=true search=<cr>", desc = "search in files" },
+        { "<leader>h", "<cmd> Telescope oldfiles<cr>",                                desc = "search recent files" },
+        { "<leader>;", "<cmd> Telescope buffers<cr>",                                 desc = "buffers" },
+        { "<leader>d", "<cmd> Telescope diagnostics<cr>",                             desc = "lsp diagnostics" },
+        { "<leader>p", "<cmd> Telescope projects<cr>",                                desc = "projects" },
     },
     config = configure
 }

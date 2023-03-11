@@ -28,5 +28,7 @@ return {
         'nyngwang/NeoNoName.lua' -- you will need this if you want to use the keymap sample below.
     },
     config = configure,
-    event = "VeryLazy"
+    keys = {
+        { "<CR>" },
+    },
 }

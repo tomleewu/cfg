@@ -2,7 +2,7 @@ return {
 
     'nvim-tree/nvim-web-devicons',
     'vim-scripts/ReplaceWithRegister',
-    { "windwp/nvim-autopairs",  config = function() require("nvim-autopairs").setup {} end },
+    { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
     -- disables search highlighting after cursor movement
     'romainl/vim-cool',
     -- open files in github
@@ -34,8 +34,6 @@ return {
         end
     },
 
-    -- auto cd to project root
-    { "ahmedkhalf/project.nvim" },
     -- comments
     'tpope/vim-commentary',
     -- opens up last session based on cwd
@@ -50,6 +48,7 @@ return {
     },
     -- better quickfix
     { 'kevinhwang91/nvim-bqf', ft = 'qf' },
+
     -- snakeCase and under_score word objects
     { 'chaoren/vim-wordmotion',
         event = "VeryLazy"
@@ -57,11 +56,14 @@ return {
     {
         'kylechui/nvim-surround',
         version = "*",
-        config = true
+        config = true,
+        event = "InsertEnter"
     },
     -- Lazygit in neovim
     { 'kdheepak/lazygit.nvim',
-        cmd = { "LazyGit" }
+        keys = {
+            { "<leader>g", "<cmd>LazyGit<cr>", "open lazygit" }
+        }
     },
 
     -- codeactions
@@ -70,13 +72,16 @@ return {
         config = function() require('nvim-lightbulb').setup({ autocmd = { enabled = true } }) end,
         event = "VeryLazy"
     },
-    'nvim-telescope/telescope-ui-select.nvim',
+    {
+        'nvim-telescope/telescope-ui-select.nvim',
+        keys = "<leader>a",
+    },
     -- lsp
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
     { 'ray-x/lsp_signature.nvim',
-        event = "VeryLazy"
+        event = "InsertEnter"
     },
     -- golang
     { 'fatih/vim-go',
