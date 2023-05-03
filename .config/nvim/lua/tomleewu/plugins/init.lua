@@ -1,8 +1,11 @@
 return {
-
     'nvim-tree/nvim-web-devicons',
     'vim-scripts/ReplaceWithRegister',
-    { "windwp/nvim-autopairs", config = function() require("nvim-autopairs").setup {} end },
+    {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end,
+        event = "VeryLazy"
+    },
     -- disables search highlighting after cursor movement
     'romainl/vim-cool',
     -- open files in github
@@ -47,10 +50,11 @@ return {
         end
     },
     -- better quickfix
-    { 'kevinhwang91/nvim-bqf', ft = 'qf' },
+    { 'kevinhwang91/nvim-bqf',              ft = 'qf' },
 
     -- snakeCase and under_score word objects
-    { 'chaoren/vim-wordmotion',
+    {
+        'chaoren/vim-wordmotion',
         event = "VeryLazy"
     },
     {
@@ -60,11 +64,14 @@ return {
         event = "InsertEnter"
     },
     -- Lazygit in neovim
-    { 'kdheepak/lazygit.nvim',
+    {
+        'kdheepak/lazygit.nvim',
         keys = {
             { "<leader>g", "<cmd>LazyGit<cr>", "open lazygit" }
         }
     },
+
+    { "lukas-reineke/indent-blankline.nvim" },
 
     -- codeactions
     {
@@ -80,14 +87,42 @@ return {
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-    { 'ray-x/lsp_signature.nvim',
+    {
+        'ray-x/lsp_signature.nvim',
         event = "InsertEnter"
     },
     -- golang
-    { 'fatih/vim-go',
+    {
+        'fatih/vim-go',
         ft = "go"
     },
 
+    {
+        'ibhagwan/fzf-lua',
+        -- optional for icon support
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        keys = {
+            { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "search in files" },
+        }
+    },
 
-    "lukas-reineke/lsp-format.nvim",
+    {
+        "lukas-reineke/lsp-format.nvim",
+        event = "BufWritePre"
+    },
+
+    {
+        'simrat39/rust-tools.nvim',
+    },
+
+    {
+        'ThePrimeagen/harpoon',
+        keys = {
+            { "<leader>m", "<cmd>lua require('harpoon.mark').add_file()<CR>",        desc = "add file" },
+            { "<leader>l", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "open menu" },
+            { "<leader>1", "<cmd>:lua require('harpoon.ui').nav_file(1)<CR>",        desc = "navigate to mark 1" },
+            { "<leader>2", "<cmd>:lua require('harpoon.ui').nav_file(2)<CR>",        desc = "navigate to mark 2" },
+            { "<leader>3", "<cmd>:lua require('harpoon.ui').nav_file(3)<CR>",        desc = "navigate to mark 2" },
+        }
+    },
 }

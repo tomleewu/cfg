@@ -2,7 +2,17 @@ local M = {}
 
 local servers = {
     sqlls = {},
-    rust_analyzer = {},
+    rust_analyzer = {
+        settings = {
+            rust_analyzer = {
+                -- enable clippy on save
+                checkOnSave = {
+                    command = "clippy",
+                },
+            }
+        }
+    },
+    cucumber_language_server = {},
     texlab = {
         settings = {
             texlab = {
@@ -62,11 +72,6 @@ local opts = {
 
 function M.setup()
     require("tomleewu.lsp.installer").setup(servers, opts)
-end
-
-local status_ok2, _ = pcall(require, "lspconfig")
-if not status_ok2 then
-    return
 end
 
 require("lsp_signature").setup({
