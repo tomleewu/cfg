@@ -91,6 +91,7 @@ return {
         'ray-x/lsp_signature.nvim',
         event = "InsertEnter"
     },
+
     -- golang
     {
         'fatih/vim-go',
@@ -125,4 +126,14 @@ return {
             { "<leader>3", "<cmd>:lua require('harpoon.ui').nav_file(3)<CR>",        desc = "navigate to mark 2" },
         }
     },
+
+    -- automatically resize windows when using a small screen
+    {
+        "anuvyklack/windows.nvim",
+        dependencies = "anuvyklack/middleclass",
+        config = function()
+            require('windows').setup()
+        end
+    },
+
 }

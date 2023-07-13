@@ -26,3 +26,5 @@ nnoremap("<leader>js", "<cmd>%!jq<cr>")
 
 -- New UUID
 inoremap("<C-u>", "<C-R>=tolower(system('uuidgen')[0:-2])<CR>")
+
+nnoremap("<BS>", "ciw")
