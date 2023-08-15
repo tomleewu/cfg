@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/go/bin:$HOME/bin:/usr/local/bin:~/.local/bin:$PATH:$HOME/.npm/bin
+export PATH=$HOME/go/bin:$HOME/bin:/usr/local/bin:~/.local/bin:$PATH:$HOME/.npm/bin:/opt/homebrew/bin
 
 # Path to your oh-my-zsh installation.
 # export ZSH=/Users/tomleewu/.oh-my-zsh
@@ -57,7 +57,7 @@ if _has fzf && _has rg; then
 fi
 
 export EDITOR='/usr/bin/vim'
-if type nvim > /dev/null 2>&1; then
+if _has nvim; then
   alias vim='nvim'
   export EDITOR='/opt/homebrew/bin/nvim'
 fi
