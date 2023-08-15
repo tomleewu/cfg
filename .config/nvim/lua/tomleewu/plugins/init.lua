@@ -57,12 +57,6 @@ return {
         'chaoren/vim-wordmotion',
         event = "VeryLazy"
     },
-    {
-        'kylechui/nvim-surround',
-        version = "*",
-        config = true,
-        event = "InsertEnter"
-    },
     -- Lazygit in neovim
     {
         'kdheepak/lazygit.nvim',
