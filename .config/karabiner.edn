@@ -9,14 +9,19 @@
 		}
 	:devices {
 			  :kbd67 [{:vendor_id 19266 :product_id 4646}]
-			  :applekeyboard [{:vendor_id 1452 :product_id 632}]
+			  :applekeyboard [
+				  {:vendor_id 1452 :product_id 632}
+				  {:vendor_id 1452 :product_id 834}
+			  ]
 			  :splitkb [{:vendor_id 64562 :product_id 647}]
 			  :allkbs [
 				{:vendor_id 19266 :product_id 4646}
 				{:vendor_id 1452 :product_id 632}
 				{:vendor_id 64562 :product_id 647}
+				{:vendor_id 1452 :product_id 834}
 			  ]
 			  :allkbsexceptsplit [
+				{:vendor_id 1452 :product_id 834}
 				{:vendor_id 19266 :product_id 4646}
 				{:vendor_id 1452 :product_id 632}
 				{:vendor_id 1452 :product_id 833}
