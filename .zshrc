@@ -15,8 +15,7 @@ ZSH_THEME="common"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux kubectl zsh-autosuggestions vi-mode fzf docker)
-
+plugins=(git tmux kubectl zsh-autosuggestions vi-mode fzf docker fast-syntax-highlighting)
 
 # Configure tmux plugin
 export ZSH_TMUX_AUTOSTART=true
@@ -94,8 +93,8 @@ zle-line-init() {
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
 
 
-if _has exa; then
-  alias ls='exa'
+if _has eza; then
+  alias ls='eza'
 fi
 
 # Use pyenv

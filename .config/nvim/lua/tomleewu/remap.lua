@@ -28,3 +28,14 @@ nnoremap("<leader>js", "<cmd>%!jq<cr>")
 inoremap("<C-u>", "<C-R>=tolower(system('uuidgen')[0:-2])<CR>")
 
 nnoremap("<BS>", "ciw")
+
+-- Open in finder
+vim.api.nvim_create_user_command('Rfinder',
+    function()
+        local path = vim.api.nvim_buf_get_name(0)
+        os.execute('open -R ' .. path)
+    end,
+    {}
+)
+
+nnoremap("<leader>o", "<cmd>Rfinder<cr>")

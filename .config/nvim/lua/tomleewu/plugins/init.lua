@@ -50,7 +50,7 @@ return {
         end
     },
     -- better quickfix
-    { 'kevinhwang91/nvim-bqf', ft = 'qf' },
+    { 'kevinhwang91/nvim-bqf',              ft = 'qf' },
 
     -- snakeCase and under_score word objects
     {
@@ -113,11 +113,11 @@ return {
     {
         'ThePrimeagen/harpoon',
         keys = {
-            { "<leader>m", "<cmd>lua require('harpoon.mark').add_file()<CR>", desc = "add file" },
+            { "<leader>m", "<cmd>lua require('harpoon.mark').add_file()<CR>",        desc = "add file" },
             { "<leader>l", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "open menu" },
-            { "<leader>1", "<cmd>:lua require('harpoon.ui').nav_file(1)<CR>", desc = "navigate to mark 1" },
-            { "<leader>2", "<cmd>:lua require('harpoon.ui').nav_file(2)<CR>", desc = "navigate to mark 2" },
-            { "<leader>3", "<cmd>:lua require('harpoon.ui').nav_file(3)<CR>", desc = "navigate to mark 2" },
+            { "<leader>1", "<cmd>:lua require('harpoon.ui').nav_file(1)<CR>",        desc = "navigate to mark 1" },
+            { "<leader>2", "<cmd>:lua require('harpoon.ui').nav_file(2)<CR>",        desc = "navigate to mark 2" },
+            { "<leader>3", "<cmd>:lua require('harpoon.ui').nav_file(3)<CR>",        desc = "navigate to mark 2" },
         }
     },
 
@@ -129,4 +129,5 @@ return {
             require('windows').setup()
         end
     },
+
 }

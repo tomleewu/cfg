@@ -85,7 +85,6 @@ return {
         { "<leader>h", "<cmd> Telescope oldfiles<cr>",    desc = "search recent files" },
         { "<leader>;", "<cmd> Telescope buffers<cr>",     desc = "buffers" },
         { "<leader>d", "<cmd> Telescope diagnostics<cr>", desc = "lsp diagnostics" },
-        { "<leader>p", "<cmd> Telescope projects<cr>",    desc = "projects" },
     },
     config = configure
 }

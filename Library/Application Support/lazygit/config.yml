@@ -1,5 +1,5 @@
 gui:
-  showIcons: true
+  nerdFontsVersion: "3"
   theme:
     selectedLineBgColor:
       - white
@@ -8,4 +8,4 @@ gui:
 git:
   paging:
     colorArg: always
-    useConfig: true
+    pager: delta  --paging=never
