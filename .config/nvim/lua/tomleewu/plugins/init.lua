@@ -50,7 +50,7 @@ return {
         end
     },
     -- better quickfix
-    { 'kevinhwang91/nvim-bqf',              ft = 'qf' },
+    { 'kevinhwang91/nvim-bqf', ft = 'qf' },
 
     -- snakeCase and under_score word objects
     {
@@ -64,8 +64,6 @@ return {
             { "<leader>g", "<cmd>LazyGit<cr>", "open lazygit" }
         }
     },
-
-    { "lukas-reineke/indent-blankline.nvim" },
 
     -- codeactions
     {
@@ -129,9 +127,7 @@ return {
             require('windows').setup()
         end
     },
-
     {
         'jeffkreeftmeijer/vim-numbertoggle'
-    }
-
+    },
 }
