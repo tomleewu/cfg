@@ -130,4 +130,9 @@ return {
     {
         'jeffkreeftmeijer/vim-numbertoggle'
     },
+    {
+        'lewis6991/gitsigns.nvim',
+        config = true,
+        event = "InsertEnter"
+    },
 }

@@ -81,7 +81,6 @@ return {
     dependencies = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
     keys = {
         { "<leader>f", "<cmd> Telescope find_files<cr>",  desc = "find files" },
-        -- { "<leader>/", "<cmd> Telescope grep_string only_sort_text=true search=<cr>", desc = "search in files" },
         { "<leader>h", "<cmd> Telescope oldfiles<cr>",    desc = "search recent files" },
         { "<leader>;", "<cmd> Telescope buffers<cr>",     desc = "buffers" },
         { "<leader>d", "<cmd> Telescope diagnostics<cr>", desc = "lsp diagnostics" },
