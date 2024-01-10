@@ -135,4 +135,12 @@ return {
         config = true,
         event = "InsertEnter"
     },
+    {
+        'dgagn/diagflow.nvim',
+        event = 'LspAttach',
+        opts = {
+            scope = 'line',
+            inline_padding_left = 3,
+        }
+    }
 }
