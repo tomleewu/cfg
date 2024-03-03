@@ -91,15 +91,6 @@ return {
     },
 
     {
-        'ibhagwan/fzf-lua',
-        -- optional for icon support
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        keys = {
-            { "<leader>/", "<cmd>FzfLua live_grep<cr>", desc = "search in files" },
-        }
-    },
-
-    {
         "lukas-reineke/lsp-format.nvim",
         event = "BufWritePre"
     },

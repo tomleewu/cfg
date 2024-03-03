@@ -27,11 +27,6 @@ vim.opt.updatetime = 200
 vim.opt.signcolumn = "yes"
 vim.opt.shortmess:append('c')
 
--- clever f
-vim.g.clever_f_across_no_line = 1
-vim.g.clever_f_smart_case = 1
-vim.g.clever_f_mark_char_color = "Macro"
-
 -- maintain history between sessions
 vim.opt.undofile = true
 -- automatically read changed files
@@ -39,6 +34,9 @@ vim.opt.autoread = true
 
 -- Remap leader key to space
 vim.g.mapleader = " "
+
+-- Better session handling
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Indents
 vim.opt.tabstop = 4
