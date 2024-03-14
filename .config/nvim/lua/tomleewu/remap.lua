@@ -39,3 +39,7 @@ vim.api.nvim_create_user_command('Rfinder',
 )
 
 nnoremap("<leader>o", "<cmd>Rfinder<cr>")
+
+-- Remap macro recording to Q to avoid disabling nvim-cmp
+nnoremap("Q", "q")
+nnoremap("q", "<Nop>")

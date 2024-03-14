@@ -5,6 +5,12 @@ local function configure()
     end
 
     cmp.setup({
+        snippet = {
+            -- REQUIRED - you must specify a snippet engine
+            expand = function(args)
+                require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+            end,
+        },
         window = {
             -- completion = cmp.config.window.bordered(),
             documentation = cmp.config.window.bordered(),
@@ -24,6 +30,7 @@ local function configure()
             fields = { "abbr", "menu" },
             format = function(entry, vim_item)
                 vim_item.menu = ({
+                    copilot = "[AI]",
                     nvim_lsp = "[LSP]",
                     buffer = "[Buf]",
                     path = "[Path]",
@@ -32,6 +39,8 @@ local function configure()
             end,
         },
         sources = cmp.config.sources({
+            -- Copilot Source
+            { name = "copilot", group_index = 2 },
             { name = 'nvim_lsp' },
             { name = 'buffer' },
             { name = 'path' },
@@ -74,6 +83,8 @@ return {
         'hrsh7th/cmp-path',
         'hrsh7th/cmp-cmdline',
         'hrsh7th/cmp-nvim-lsp',
+        'L3MON4D3/LuaSnip',
+        'saadparwaiz1/cmp_luasnip',
     },
     config = configure
 }

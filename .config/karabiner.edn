@@ -22,6 +22,7 @@
 			  ]
 			  :allkbsexceptsplit [
 				{:vendor_id 1452 :product_id 834}
+				{:vendor_id 0 :product_id 0}
 				{:vendor_id 19266 :product_id 4646}
 				{:vendor_id 1452 :product_id 632}
 				{:vendor_id 1452 :product_id 833}
@@ -29,7 +30,7 @@
 	}
 	:layers {
 		:right-alt {:key :right_alt}
-					}
+	}
 	:applications {
 		:Browsers [
 			"^com\\.google\\.Chrome$"
@@ -91,6 +92,11 @@
 		     :rules [
 			    [:!Tsemicolon :!Tw [:Terminals]]
 			    [:!Tsemicolon :!Odelete_or_backspace]
-		      ]}
+		      ]},
+		{:des "scroll with cmd + j/k",
+		     :rules [
+			    [:!Cj {:mkey {:vwheel 75 :speed 3}} [:Browsers]]
+			    [:!Ck {:mkey {:vwheel -75 :speed 3}} [:Browsers]]
+		      ]},
 		]
 }

@@ -87,7 +87,11 @@ return {
     -- golang
     {
         'fatih/vim-go',
-        ft = "go"
+        ft = "go",
+        keys = {
+            { "<C-c>", "<cmd>GoTestFunc!<CR>" },
+            { "<C-v>", "<cmd>GoVet<CR>" },
+        },
     },
 
     {
@@ -97,17 +101,6 @@ return {
 
     {
         'simrat39/rust-tools.nvim',
-    },
-
-    {
-        'ThePrimeagen/harpoon',
-        keys = {
-            { "<leader>m", "<cmd>lua require('harpoon.mark').add_file()<CR>",        desc = "add file" },
-            { "<leader>l", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", desc = "open menu" },
-            { "<leader>1", "<cmd>:lua require('harpoon.ui').nav_file(1)<CR>",        desc = "navigate to mark 1" },
-            { "<leader>2", "<cmd>:lua require('harpoon.ui').nav_file(2)<CR>",        desc = "navigate to mark 2" },
-            { "<leader>3", "<cmd>:lua require('harpoon.ui').nav_file(3)<CR>",        desc = "navigate to mark 2" },
-        }
     },
 
     -- automatically resize windows when using a small screen
@@ -133,5 +126,32 @@ return {
             scope = 'line',
             inline_padding_left = 3,
         }
+    },
+
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                suggestion = { enabled = false },
+                panel = { enabled = false },
+            })
+        end,
+    },
+
+    {
+        "zbirenbaum/copilot-cmp",
+        config = function()
+            require("copilot_cmp").setup()
+        end
+    },
+    {
+        "theKnightsOfRohan/csvlens.nvim",
+        dependencies = {
+            "akinsho/toggleterm.nvim"
+        },
+        ft = "csv",
+        config = true,
     }
 }

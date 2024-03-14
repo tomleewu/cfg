@@ -31,7 +31,7 @@ local servers = {
             gopls = {
                 gofumpt = true,
                 staticcheck = true,
-                usePlaceholders = true
+                usePlaceholders = true,
             }
         }
     },

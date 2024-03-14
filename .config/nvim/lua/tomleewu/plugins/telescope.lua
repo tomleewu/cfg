@@ -1,17 +1,6 @@
 local function configure()
     local telescope = require('telescope')
     local actions = require("telescope.actions")
-    local telescopeConfig = require("telescope.config")
-
-    -- Clone the default Telescope configuration
-    local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-
-    -- I want to search in hidden/dot files.
-    table.insert(vimgrep_arguments, "--hidden")
-    -- I don't want to search in the `.git` directory.
-    table.insert(vimgrep_arguments, "--glob")
-    table.insert(vimgrep_arguments, "!.git/*")
-
 
     telescope.setup {
         defaults = {
@@ -22,7 +11,6 @@ local function configure()
                     ["<C-k>"] = actions.move_selection_previous,
                 },
             },
-            vimgrep_arguments = vimgrep_arguments,
             sorting_strategy = "ascending",
             layout_strategy = "horizontal",
             layout_config = {
@@ -34,16 +22,6 @@ local function configure()
             },
             preview = {
                 treesitter = false
-            },
-        },
-        pickers = {
-            find_files = {
-                find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
-            },
-            diagnostics = {
-                root_dir = true,
-                severity_limit = "WARN",
-                no_unlisted = false,
             },
         },
         extensions = {
@@ -69,8 +47,6 @@ local function configure()
         }
     }
 
-    telescope.load_extension('fzf')
-    telescope.load_extension('projects')
     telescope.load_extension("ui-select")
 end
 
@@ -78,12 +54,7 @@ end
 return {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
-    dependencies = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
-    keys = {
-        -- { "<leader>f", "<cmd> Telescope find_files<cr>",  desc = "find files" },
-        { "<leader>h", "<cmd> Telescope oldfiles<cr>",    desc = "search recent files" },
-        { "<leader>;", "<cmd> Telescope buffers<cr>",     desc = "buffers" },
-        { "<leader>d", "<cmd> Telescope diagnostics<cr>", desc = "lsp diagnostics" },
-    },
+    dependencies = { { 'nvim-lua/plenary.nvim' } },
+    event = 'LspAttach',
     config = configure
 }
