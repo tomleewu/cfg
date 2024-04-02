@@ -46,6 +46,9 @@ fi
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias lg='lazygit'
+if _has lazygit; then
+  alias cg='lg --git-dir=$HOME/.cfg --work-tree=$HOME'
+fi
 
 # fzf + rg configuration
 if _has fzf && _has rg; then
@@ -91,7 +94,6 @@ zle-line-init() {
 
 # Fix weird directory colors from ls
 export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-
 
 if _has eza; then
   alias ls='eza'

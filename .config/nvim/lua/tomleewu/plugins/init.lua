@@ -146,12 +146,4 @@ return {
             require("copilot_cmp").setup()
         end
     },
-    {
-        "theKnightsOfRohan/csvlens.nvim",
-        dependencies = {
-            "akinsho/toggleterm.nvim"
-        },
-        ft = "csv",
-        config = true,
-    }
 }

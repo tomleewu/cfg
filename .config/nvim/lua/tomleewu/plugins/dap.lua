@@ -18,6 +18,7 @@ return {
         "nvim-telescope/telescope-dap.nvim",
         "leoluz/nvim-dap-go",
         'theHamsta/nvim-dap-virtual-text',
+        "nvim-neotest/nvim-nio",
     },
     config = function()
         -- Debugging keymaps
