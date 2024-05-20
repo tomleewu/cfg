@@ -37,8 +37,6 @@ return {
         end
     },
 
-    -- comments
-    'tpope/vim-commentary',
     -- opens up last session based on cwd
     {
         'rmagatti/auto-session',
@@ -109,7 +107,8 @@ return {
         dependencies = "anuvyklack/middleclass",
         config = function()
             require('windows').setup()
-        end
+        end,
+        event = "VeryLazy"
     },
     {
         'jeffkreeftmeijer/vim-numbertoggle'
