@@ -1,7 +1,6 @@
 local M = {}
 
 local servers = {
-    sqlls = {},
     rust_analyzer = {
         settings = {
             rust_analyzer = {
@@ -12,7 +11,6 @@ local servers = {
             }
         }
     },
-    cucumber_language_server = {},
     texlab = {
         settings = {
             texlab = {

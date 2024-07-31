@@ -642,7 +642,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.apple\\.Safari$" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.apple\\.Safari$", "^company\\.thebrowser\\.Browser$" ]
           } ],
           "type" : "basic"
         }, {
@@ -660,7 +660,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.apple\\.Safari$" ]
+            "bundle_identifiers" : [ "^com\\.google\\.Chrome$", "^com\\.apple\\.Safari$", "^company\\.thebrowser\\.Browser$" ]
           } ],
           "type" : "basic"
         } ]

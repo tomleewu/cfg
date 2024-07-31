@@ -1,8 +1,7 @@
-local nnoremap = require('tomleewu/keymap').nnoremap
-
 return {
     'folke/trouble.nvim',
+    cmd = "Trouble",
     keys = {
-        { "<leader>t", "<cmd>TroubleToggle<cr>", desc = "Toggle Trouble" },
+        { "<leader>t", "<cmd>Trouble diagnostics toggle<cr>", desc = "Toggle Trouble" },
     },
 }

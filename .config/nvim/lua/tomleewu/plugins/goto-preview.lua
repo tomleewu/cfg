@@ -3,7 +3,7 @@ return
     'rmagatti/goto-preview',
     config = function()
         require('goto-preview').setup {
-            width = 110, -- Width of the floating window
+            width = 120, -- Width of the floating window
             height = 25, -- Height of the floating window
             border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" }, -- Border characters of the floating window
             default_mappings = false, -- Bind default mappings

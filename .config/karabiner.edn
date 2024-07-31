@@ -35,6 +35,7 @@
 		:Browsers [
 			"^com\\.google\\.Chrome$"
 			"^com\\.apple\\.Safari$"
+			"^company\\.thebrowser\\.Browser$"
 		]
 		:Terminals [
 			"^net\\.kovidgoyal\\.kitty$"
