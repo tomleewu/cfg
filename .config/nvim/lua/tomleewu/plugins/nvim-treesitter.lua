@@ -40,6 +40,15 @@ local function configure()
         },
 
         textobjects = {
+            move = {
+                enable = true,
+                goto_next_start = {
+                    ["]]"] = "@function.outer",
+                },
+                goto_previous_start = {
+                    ["[["] = "@function.outer",
+                },
+            },
             select = {
                 enable = true,
 
@@ -83,6 +92,9 @@ local function configure()
                 enable = true,
                 swap_next = {
                     ["<leader>S"] = "@parameter.inner",
+                },
+                swap_previous = {
+                    ["<leader>s"] = "@parameter.inner",
                 },
             },
         },

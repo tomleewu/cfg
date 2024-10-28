@@ -70,20 +70,19 @@ return {
   'neovim/nvim-lspconfig',
   {
     'ray-x/lsp_signature.nvim',
-    event = "InsertEnter"
-  },
-  -- golang
-  {
-    'fatih/vim-go',
-    ft = "go",
-    keys = {
-      { "<C-c>", "<cmd>GoTestFunc!<CR>" },
-      { "<C-v>", "<cmd>GoVet<CR>" },
-    },
+    event = "InsertEnter",
   },
   {
-    'lukas-reineke/lsp-format.nvim',
-    event = "BufWritePre"
+    'stevearc/conform.nvim',
+    config = function()
+      require('conform').setup({
+        format_on_save = {
+          -- These options will be passed to conform.format()
+          timeout_ms = 750,
+          lsp_format = "fallback",
+        },
+      })
+    end,
   },
   -- automatically resize windows when using a small screen
   {
@@ -101,31 +100,6 @@ return {
     'lewis6991/gitsigns.nvim',
     config = true,
     event = "InsertEnter"
-  },
-  {
-    'dgagn/diagflow.nvim',
-    event = 'LspAttach',
-    opts = {
-      scope = 'line',
-      inline_padding_left = 3,
-    }
-  },
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end,
-  },
-  {
-    'zbirenbaum/copilot-cmp',
-    config = function()
-      require("copilot_cmp").setup()
-    end
   },
   {
     'iamcco/markdown-preview.nvim',
@@ -148,13 +122,6 @@ return {
         "<leader>cw",
         "<cmd>Yazi cwd<cr>",
         desc = "Open the file manager in nvim's working directory",
-      },
-      {
-        -- NOTE: this requires a version of yazi that includes
-        -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
-        '<c-up>',
-        "<cmd>Yazi toggle<cr>",
-        desc = "Resume the last yazi session",
       },
     },
     ---@type YaziConfig
@@ -180,5 +147,11 @@ return {
         tmux = { enabled = true }, -- disables the tmux statusline
       }
     }
-  }
+  },
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has("nvim-0.10.0") == 1,
+  },
 }
