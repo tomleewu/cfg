@@ -55,9 +55,11 @@ end
 
 require("tomleewu.lsp.handlers").setup()
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 local opts = {
   on_attach = M.on_attach,
-  capabilities = M.capabilities,
+  capabilities = require('blink.cmp').get_lsp_capabilities(capabilities),
 }
 
 function M.setup()

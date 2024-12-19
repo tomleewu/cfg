@@ -15,7 +15,7 @@ ZSH_THEME="common"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux kubectl zsh-autosuggestions vi-mode fzf docker fast-syntax-highlighting)
+plugins=(git tmux zsh-autosuggestions vi-mode fzf fast-syntax-highlighting)
 
 # Configure tmux plugin
 export ZSH_TMUX_AUTOSTART=true

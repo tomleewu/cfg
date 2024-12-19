@@ -14,7 +14,6 @@ return {
     dependencies = { { 'tpope/vim-fugitive' } },
     event = "VeryLazy"
   },
-  'alexghergh/nvim-tmux-navigation',
   -- automated indention
   'tpope/vim-sleuth',
 
@@ -71,18 +70,6 @@ return {
   {
     'ray-x/lsp_signature.nvim',
     event = "InsertEnter",
-  },
-  {
-    'stevearc/conform.nvim',
-    config = function()
-      require('conform').setup({
-        format_on_save = {
-          -- These options will be passed to conform.format()
-          timeout_ms = 750,
-          lsp_format = "fallback",
-        },
-      })
-    end,
   },
   -- automatically resize windows when using a small screen
   {
@@ -143,6 +130,9 @@ return {
       },
     },
     opts = {
+      window = {
+        width = 160
+      },
       plugins = {
         tmux = { enabled = true }, -- disables the tmux statusline
       }
@@ -154,4 +144,33 @@ return {
     event = "VeryLazy",
     enabled = vim.fn.has("nvim-0.10.0") == 1,
   },
+  {
+    "leath-dub/snipe.nvim",
+    keys = {
+      { "gh", function() require("snipe").open_buffer_menu() end, desc = "Open Snipe buffer menu" },
+    },
+    opts = {
+      sort = "last",
+      -- In case you changed your mind, provide a keybind that lets you
+      -- cancel the snipe and close the window.
+      navigate = {
+        cancel_snipe = "q",
+      },
+      ui = {
+        max_height = 10,
+        position = "center",
+      }
+    }
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  }
 }
