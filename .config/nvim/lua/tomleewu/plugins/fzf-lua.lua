@@ -3,7 +3,9 @@ return {
     -- optional for icon support
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-        require('fzf-lua').setup({
+        local fzflua = require("fzf-lua")
+        fzflua.register_ui_select()
+        fzflua.setup({
             'telescope',
             winopts  = {
                 width = 0.9,
@@ -38,7 +40,6 @@ return {
             hls      = {
                 header_bind = "FzfLuaNormal",
             },
-
         })
     end,
     keys = {
