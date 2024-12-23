@@ -59,10 +59,6 @@ return {
     config = function() require('nvim-lightbulb').setup({ autocmd = { enabled = true } }) end,
     event = "VeryLazy"
   },
-  {
-    'nvim-telescope/telescope-ui-select.nvim',
-    keys = "<leader>a",
-  },
   -- lsp
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
@@ -172,5 +168,9 @@ return {
         panel = { enabled = false },
       })
     end,
+  },
+  {
+    'stevearc/dressing.nvim',
+    opts = {},
   }
 }

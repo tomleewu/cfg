@@ -5,7 +5,7 @@ return {
   dependencies = { 'rafamadriz/friendly-snippets', 'giuxtaposition/blink-cmp-copilot', },
 
   -- use a release tag to download pre-built binaries
-  version = 'v0.*',
+  version = '*',
   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   -- build = 'cargo build --release',
   -- On musl libc based systems you need to add this flag
@@ -35,6 +35,8 @@ return {
       nerd_font_variant = 'normal'
     },
     completion = {
+      list = { selection = 'auto_insert' },
+      keyword = { range = 'full' },
       menu = {
         draw = {
           columns = { { "label", "label_description", gap = 1 }, { "source_name" }, },
@@ -48,16 +50,16 @@ return {
     -- default list of enabled providers defined so that you can extend it
     -- elsewhere in your config, without redefining it, via `opts_extend`
     sources = {
-      completion = {
-        enabled_providers = { "lsp", "path", "snippets", "buffer", "copilot" },
-      },
+      default = { "lsp", "path", "snippets", "buffer", "copilot" },
+      cmdline = {},
       providers = {
         copilot = {
           name = "copilot",
           module = "blink-cmp-copilot",
+          score_offset = 100,
+          async = true,
         },
       },
-
     },
   },
   opts_extend = { "sources.default" }
