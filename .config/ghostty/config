@@ -6,3 +6,8 @@ window-padding-y=24
 macos-titlebar-style=hidden
 resize-overlay=never
 font-feature=-calt
+
+macos-icon=custom-style
+macos-icon-frame=plastic
+macos-icon-ghost-color=000000
+macos-icon-screen-color=EBE5CC
