@@ -1,0 +1,8 @@
+theme=paper
+font-size=15
+title= " "
+window-padding-x=24
+window-padding-y=24
+macos-titlebar-style=hidden
+resize-overlay=never
+font-feature=-calt
