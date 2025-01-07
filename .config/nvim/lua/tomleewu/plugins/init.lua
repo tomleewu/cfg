@@ -53,12 +53,6 @@ return {
     }
   },
 
-  -- codeactions
-  {
-    'kosayoda/nvim-lightbulb',
-    config = function() require('nvim-lightbulb').setup({ autocmd = { enabled = true } }) end,
-    event = "VeryLazy"
-  },
   -- lsp
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
@@ -126,5 +120,17 @@ return {
   {
     'stevearc/dressing.nvim',
     opts = {},
-  }
+  },
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    opts = {
+      -- configurations go here
+    },
+  },
 }
