@@ -30,12 +30,10 @@ return {
   -- opens up last session based on cwd
   {
     'rmagatti/auto-session',
-    config = function()
-      require("auto-session").setup {
-        log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      }
-    end
+    opts = {
+      log_level = "error",
+      auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+    }
   },
   -- better quickfix
   { 'kevinhwang91/nvim-bqf', ft = 'qf' },
@@ -77,16 +75,19 @@ return {
     event = "InsertEnter"
   },
   {
-    'iamcco/markdown-preview.nvim',
+    "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install && git restore .",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
   },
   {
     'folke/zen-mode.nvim',
     keys = {
       {
-        "<CR>",
+        "<leader>z",
         "<cmd>ZenMode<cr>",
         desc = "Toggle Zen Mode",
       },

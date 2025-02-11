@@ -6,10 +6,6 @@ return {
 
   -- use a release tag to download pre-built binaries
   version = '*',
-  -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
-  -- On musl libc based systems you need to add this flag
-  -- build = 'RUSTFLAGS="-C target-feature=-crt-static" cargo build --release',
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -35,15 +31,16 @@ return {
       nerd_font_variant = 'normal'
     },
     completion = {
-      list = { selection = 'auto_insert' },
+      list = {
+        selection = {
+          preselect = false,
+        },
+      },
       keyword = { range = 'full' },
       menu = {
         draw = {
           columns = { { "label", "label_description", gap = 1 }, { "source_name" }, },
         }
-      },
-      ghost_text = {
-        enabled = true,
       },
     },
 

@@ -458,7 +458,7 @@
             "type" : "variable_if"
           }, {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$" ]
+            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$", "^com\\.mitchellh\\.ghostty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -478,7 +478,7 @@
             "type" : "variable_if"
           }, {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$" ]
+            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$", "^com\\.mitchellh\\.ghostty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -498,7 +498,7 @@
             "type" : "variable_if"
           }, {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$" ]
+            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$", "^com\\.mitchellh\\.ghostty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -518,7 +518,7 @@
             "type" : "variable_if"
           }, {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$" ]
+            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$", "^com\\.mitchellh\\.ghostty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -605,7 +605,7 @@
           } ],
           "conditions" : [ {
             "type" : "frontmost_application_if",
-            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$" ]
+            "bundle_identifiers" : [ "^net\\.kovidgoyal\\.kitty$", "^com\\.mitchellh\\.ghostty$" ]
           } ],
           "type" : "basic"
         }, {
@@ -1868,6 +1868,9 @@
       } ]
     } ],
     "name" : "Default",
-    "selected" : true
+    "selected" : true,
+    "virtual_hid_keyboard" : {
+      "keyboard_type_v2" : "ansi"
+    }
   } ]
 }

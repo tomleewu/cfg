@@ -39,6 +39,7 @@
 		]
 		:Terminals [
 			"^net\\.kovidgoyal\\.kitty$"
+			"^com\\.mitchellh\\.ghostty$"
 		]
 	}
 	:main [
