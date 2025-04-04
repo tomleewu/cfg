@@ -36,7 +36,7 @@ vim.opt.autoread = true
 vim.g.mapleader = " "
 
 -- Better session handling
-vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Indents
 vim.opt.tabstop = 4

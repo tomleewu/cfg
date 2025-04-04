@@ -1,5 +1,4 @@
 return {
-  'nvim-tree/nvim-web-devicons',
   'vim-scripts/ReplaceWithRegister',
   {
     'windwp/nvim-autopairs',
@@ -42,13 +41,6 @@ return {
   {
     'chaoren/vim-wordmotion',
     event = "VeryLazy"
-  },
-  -- Lazygit in neovim
-  {
-    'kdheepak/lazygit.nvim',
-    keys = {
-      { "<leader>g", "<cmd>LazyGit<cr>", "open lazygit" }
-    }
   },
 
   -- lsp
@@ -119,10 +111,6 @@ return {
     end,
   },
   {
-    'stevearc/dressing.nvim',
-    opts = {},
-  },
-  {
     "utilyre/barbecue.nvim",
     name = "barbecue",
     version = "*",
@@ -134,4 +122,28 @@ return {
       -- configurations go here
     },
   },
+  {
+    "otavioschwanck/arrow.nvim",
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+    },
+    event = "VeryLazy",
+    opts = {
+      separate_by_branch = true,
+      always_show_path = true,
+      show_icons = true,
+      leader_key = ',',        -- Recommended to be a single key
+      buffer_leader_key = 'm', -- Per Buffer Mappings
+    }
+  },
+  {
+    "gbprod/substitute.nvim",
+    config = function()
+      local substitute = require("substitute")
+      substitute.setup()
+      vim.keymap.set("n", "<C-s>", substitute.operator, { noremap = true })
+      -- vim.keymap.set("n", "ss", substitute.line, { noremap = true })
+      vim.keymap.set("n", "S", substitute.eol, { noremap = true })
+    end,
+  }
 }

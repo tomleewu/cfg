@@ -9,6 +9,14 @@ return {
     -- refer to the configuration section below
     bigfile = { enabled = true },
     dashboard = { enabled = false },
+    image = {
+      enabled = false,
+      doc = {
+        -- enable image viewer for documents
+        -- a treesitter parser must be available for the enabled languages.
+        enabled = false,
+      },
+    },
     explorer = { enabled = true },
     indent = { enabled = false },
     input = { enabled = true },
@@ -25,6 +33,9 @@ return {
         input = {
           keys = {
             ["<Esc>"] = { "close", mode = { "n", "i" } },
+            ["<C-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+            ["<C-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+            ["<C-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
           }
         }
       },
@@ -55,9 +66,11 @@ return {
     words = { enabled = false },
   },
   keys = {
-    { "<leader>e",  function() Snacks.explorer() end,          desc = "File Explorer" },
-    { "<leader>f",  function() Snacks.picker.files() end,      desc = "Find Files" },
-    { "<leader>/",  function() Snacks.picker.grep() end,       desc = "Grep" },
-    { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
+    { "<leader>g", function() Snacks.lazygit() end,      desc = "Lazygit" },
+    { "<leader>F", function() Snacks.picker.smart() end, desc = "Smart File Explorer" },
+    { "<leader>e", function() Snacks.explorer() end,     desc = "File Explorer" },
+    { "<leader>f", function() Snacks.picker.files() end, desc = "Find Files" },
+    { "<leader>/", function() Snacks.picker.grep() end,  desc = "Grep" },
+    -- { "<leader>sH", function() Snacks.picker.highlights() end, desc = "Highlights" },
   }
 }
