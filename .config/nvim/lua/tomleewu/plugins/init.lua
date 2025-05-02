@@ -1,19 +1,23 @@
 return {
   'vim-scripts/ReplaceWithRegister',
+
   {
     'windwp/nvim-autopairs',
     config = function() require("nvim-autopairs").setup {} end,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
+
   -- disables search highlighting after cursor movement
   'romainl/vim-cool',
+
   -- open files in github
   {
     'tpope/vim-rhubarb',
     dependencies = { { 'tpope/vim-fugitive' } },
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
-  -- automated indention
+
+  -- automated indentation
   'tpope/vim-sleuth',
 
   -- colorscheme
@@ -23,7 +27,7 @@ return {
     priority = 1000,
     config = function()
       vim.cmd([[colorscheme paper]])
-    end
+    end,
   },
 
   -- opens up last session based on cwd
@@ -32,40 +36,46 @@ return {
     opts = {
       log_level = "error",
       auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-    }
+    },
   },
+
   -- better quickfix
   { 'kevinhwang91/nvim-bqf', ft = 'qf' },
 
   -- snakeCase and under_score word objects
   {
     'chaoren/vim-wordmotion',
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
 
   -- lsp
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
   'neovim/nvim-lspconfig',
+
   {
     'ray-x/lsp_signature.nvim',
     event = "InsertEnter",
   },
+
   -- automatically resize windows when using a small screen
   {
     'anuvyklack/windows.nvim',
     dependencies = "anuvyklack/middleclass",
     config = true,
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
+
   {
-    'jeffkreeftmeijer/vim-numbertoggle'
+    'jeffkreeftmeijer/vim-numbertoggle',
   },
+
   {
     'lewis6991/gitsigns.nvim',
     config = true,
-    event = "InsertEnter"
+    event = "InsertEnter",
   },
+
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -75,6 +85,7 @@ return {
     end,
     ft = { "markdown" },
   },
+
   {
     'folke/zen-mode.nvim',
     keys = {
@@ -86,19 +97,21 @@ return {
     },
     opts = {
       window = {
-        width = 160
+        width = 160,
       },
       plugins = {
         tmux = { enabled = true }, -- disables the tmux statusline
-      }
-    }
+      },
+    },
   },
+
   {
     "folke/ts-comments.nvim",
     opts = {},
     event = "VeryLazy",
     enabled = vim.fn.has("nvim-0.10.0") == 1,
   },
+
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
@@ -107,9 +120,12 @@ return {
       require("copilot").setup({
         suggestion = { enabled = false },
         panel = { enabled = false },
+        copilot_node_command = "/Users/tomwu/.asdf/installs/nodejs/22.9.0/bin/node",
+        copilot_model = "gpt-4o-copilot",
       })
     end,
   },
+
   {
     "utilyre/barbecue.nvim",
     name = "barbecue",
@@ -122,6 +138,7 @@ return {
       -- configurations go here
     },
   },
+
   {
     "otavioschwanck/arrow.nvim",
     dependencies = {
@@ -134,16 +151,11 @@ return {
       show_icons = true,
       leader_key = ',',        -- Recommended to be a single key
       buffer_leader_key = 'm', -- Per Buffer Mappings
-    }
+    },
   },
+
   {
-    "gbprod/substitute.nvim",
-    config = function()
-      local substitute = require("substitute")
-      substitute.setup()
-      vim.keymap.set("n", "<C-s>", substitute.operator, { noremap = true })
-      -- vim.keymap.set("n", "ss", substitute.line, { noremap = true })
-      vim.keymap.set("n", "S", substitute.eol, { noremap = true })
-    end,
-  }
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" },
+  },
 }

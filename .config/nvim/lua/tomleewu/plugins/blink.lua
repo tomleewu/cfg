@@ -2,7 +2,7 @@ return {
   'saghen/blink.cmp',
   lazy = false, -- lazy loading handled internally
   -- optional: provides snippets for the snippet source
-  dependencies = { 'rafamadriz/friendly-snippets', 'giuxtaposition/blink-cmp-copilot', },
+  dependencies = { 'rafamadriz/friendly-snippets', 'fang2hou/blink-copilot' },
 
   -- use a release tag to download pre-built binaries
   version = '*',
@@ -21,6 +21,7 @@ return {
       ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
       ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
 
+
       ['<Tab>'] = { 'snippet_forward', 'fallback' },
       ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
     },
@@ -31,6 +32,9 @@ return {
       nerd_font_variant = 'normal'
     },
     completion = {
+      ghost_text = {
+        enabled = true,
+      },
       list = {
         selection = {
           preselect = false,
@@ -40,7 +44,8 @@ return {
       menu = {
         draw = {
           columns = { { "label", "label_description", gap = 1 }, { "source_name" }, },
-        }
+        },
+        direction_priority = { 'n', 's' },
       },
     },
     cmdline = {
@@ -54,7 +59,7 @@ return {
       providers = {
         copilot = {
           name = "copilot",
-          module = "blink-cmp-copilot",
+          module = "blink-copilot",
           score_offset = 100,
           async = true,
         },

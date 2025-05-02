@@ -7,7 +7,7 @@ resize-overlay=never
 
 font-feature=-calt
 font-size=16
-font-family="JetBrains Mono"
+font-family="Maple Mono NL"
 
 macos-icon=custom-style
 macos-icon-frame=plastic

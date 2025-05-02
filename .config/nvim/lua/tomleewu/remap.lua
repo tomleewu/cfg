@@ -15,9 +15,6 @@ nnoremap("<C-g>", "<C-6>")
 -- Reload vimrc
 nnoremap("<leader><leader>r", "<cmd>source $MYVIMRC<CR>")
 
--- close quickfix window
-nnoremap("<leader><leader>c", "<cmd>ccl<CR>")
-
 -- Open init.vim
 nnoremap("cv", "<cmd>edit $MYVIMRC<CR>")
 
